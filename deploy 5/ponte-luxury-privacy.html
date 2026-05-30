@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy | The Ponte Group Luxury Division</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--obsidian:#080808;--deep:#0e0e0e;--carbon:#141414;--border:rgba(180,150,90,0.18);--border-light:rgba(180,150,90,0.09);--champagne:#C9A96E;--champagne-light:#DFC28A;--champagne-dim:rgba(201,169,110,0.55);--silver-dim:rgba(184,192,200,0.42);--cream:#F2EDE4;--cream-dim:rgba(242,237,228,0.68);--text-body:rgba(242,237,228,0.70);--nav-h:88px;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--obsidian);color:var(--cream);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;cursor:none;}
+#cursor{position:fixed;width:10px;height:10px;background:var(--champagne);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:difference;}
+#cursor-ring{position:fixed;width:36px;height:36px;border:1px solid var(--champagne-dim);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .06s,top .06s,width .3s,height .3s;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--obsidian);}::-webkit-scrollbar-thumb{background:var(--champagne);border-radius:2px;}
+nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 60px;z-index:1000;background:rgba(8,8,8,0.96);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);}
+.nav-logo{display:flex;align-items:center;gap:20px;text-decoration:none;}
+.nav-logo .pg-mono{font-family:'Cormorant SC',serif;font-size:28px;font-weight:500;letter-spacing:2px;background:linear-gradient(135deg,#C9A96E 0%,#e8d5a3 40%,#C9A96E 70%,#a07840 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-logo .divider{width:1px;height:32px;background:var(--border);}
+.nav-logo .brand-text{display:flex;flex-direction:column;}
+.nav-logo .brand-text span:first-child{font-family:'Cormorant SC',serif;font-size:13px;letter-spacing:3px;color:var(--cream);line-height:1.3;}
+.nav-logo .brand-text span:last-child{font-size:9px;letter-spacing:4px;color:var(--champagne);text-transform:uppercase;}
+.nav-links{display:flex;align-items:center;gap:36px;list-style:none;}
+.nav-links a{font-size:10.5px;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;color:var(--cream-dim);text-decoration:none;transition:color .3s;}
+.nav-links a:hover{color:var(--champagne);}
+.nav-cta{color:var(--champagne)!important;border:1px solid var(--champagne-dim)!important;padding:10px 22px!important;}
+.nav-cta:hover{background:var(--champagne)!important;color:var(--obsidian)!important;}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:none;padding:6px;background:none;border:none;}
+.nav-toggle span{display:block;width:24px;height:1px;background:var(--cream);transition:transform .35s cubic-bezier(.16,1,.3,1),opacity .25s,width .3s;transform-origin:center;}
+.nav-toggle.open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+.nav-toggle.open span:nth-child(2){opacity:0;width:0;}
+.nav-toggle.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+.mobile-drawer{position:fixed;top:0;right:0;bottom:0;width:min(340px,88vw);background:var(--carbon);border-left:1px solid var(--border);z-index:1100;transform:translateX(100%);transition:transform .45s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;overflow-y:auto;}
+.mobile-drawer.open{transform:translateX(0);}
+.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(4px);z-index:1050;opacity:0;pointer-events:none;transition:opacity .4s;}
+.drawer-overlay.open{opacity:1;pointer-events:all;}
+.drawer-header{padding:28px 32px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;background:var(--carbon);}
+.drawer-brand{display:flex;flex-direction:column;gap:3px;}
+.drawer-brand .db-name{font-family:'Cormorant SC',serif;font-size:16px;letter-spacing:2px;color:var(--cream);}
+.drawer-brand .db-sub{font-size:8px;letter-spacing:3.5px;text-transform:uppercase;color:var(--champagne);}
+.drawer-close{width:32px;height:32px;border:1px solid var(--border);background:none;color:var(--cream-dim);font-size:16px;display:flex;align-items:center;justify-content:center;cursor:none;transition:border-color .2s,color .2s;}
+.drawer-close:hover{border-color:var(--champagne);color:var(--champagne);}
+.drawer-nav{padding:16px 0;flex:1;}
+.drawer-nav a{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;font-size:11px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--cream-dim);text-decoration:none;border-bottom:1px solid var(--border-light);transition:color .2s,background .2s,padding-left .2s;}
+.drawer-nav a:hover{color:var(--champagne);background:rgba(201,169,110,0.03);padding-left:38px;}
+.drawer-nav a .dn-arrow{font-size:14px;opacity:.4;}
+.drawer-cta{padding:24px 32px 32px;border-top:1px solid var(--border);}
+.drawer-cta a{display:block;text-align:center;background:var(--champagne);color:var(--obsidian);font-size:10px;font-weight:500;letter-spacing:3.5px;text-transform:uppercase;padding:17px 28px;text-decoration:none;transition:background .3s;margin-bottom:12px;}
+.drawer-cta a:hover{background:var(--champagne-light);}
+.drawer-contact{display:flex;flex-direction:column;gap:8px;margin-top:20px;padding-top:20px;border-top:1px solid var(--border);}
+.dc-item{font-size:11px;color:var(--text-body);display:flex;align-items:center;gap:10px;}
+.dc-item .dc-icon{color:var(--champagne-dim);}
+
+/* ═══ PAGE LAYOUT ═══ */
+.page-wrap{padding-top:var(--nav-h);min-height:100vh;display:grid;grid-template-columns:280px 1fr;align-items:start;}
+
+/* Sticky sidebar TOC */
+.toc-sidebar{position:sticky;top:var(--nav-h);height:calc(100vh - var(--nav-h));background:var(--carbon);border-right:1px solid var(--border);padding:48px 36px;display:flex;flex-direction:column;gap:0;overflow-y:auto;}
+.toc-label{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--champagne);margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border);}
+.toc-link{display:block;padding:12px 0;font-size:10px;letter-spacing:1.5px;color:var(--silver-dim);text-decoration:none;border-left:2px solid transparent;padding-left:14px;margin-left:-2px;transition:color .2s,border-color .2s;line-height:1.5;}
+.toc-link:hover,.toc-link.active-toc{color:var(--champagne);border-left-color:var(--champagne);}
+.toc-updated{margin-top:auto;padding-top:28px;border-top:1px solid var(--border);}
+.toc-updated span{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--silver-dim);display:block;}
+.toc-updated strong{font-size:11px;color:var(--cream-dim);font-weight:300;margin-top:4px;display:block;}
+
+/* Main content */
+.policy-main{padding:72px 8vw 100px 7vw;max-width:860px;}
+
+/* Hero */
+.policy-hero{margin-bottom:64px;padding-bottom:48px;border-bottom:1px solid var(--border);}
+.ph-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
+.ph-eyebrow .line{width:36px;height:1px;background:var(--champagne);}
+.ph-eyebrow span{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--champagne);}
+.ph-title{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5vw,72px);font-weight:300;line-height:1;letter-spacing:-1px;margin-bottom:20px;}
+.ph-title em{font-style:italic;color:var(--champagne);}
+.ph-meta{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.ph-date{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--silver-dim);}
+.ph-badge{font-size:9px;letter-spacing:2px;text-transform:uppercase;border:1px solid var(--border);padding:5px 14px;color:var(--champagne-dim);}
+
+/* Section styles */
+.policy-section{margin-bottom:56px;scroll-margin-top:calc(var(--nav-h) + 24px);}
+.ps-num{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--champagne-dim);margin-bottom:10px;display:flex;align-items:center;gap:12px;}
+.ps-num::after{content:'';flex:0 0 28px;height:1px;background:var(--border);}
+.ps-title{font-family:'Cormorant SC',serif;font-size:22px;letter-spacing:2px;font-weight:400;margin-bottom:18px;color:var(--cream);}
+.ps-body{font-size:13px;line-height:2;color:var(--text-body);}
+.ps-body p{margin-bottom:16px;}
+.ps-body p:last-child{margin-bottom:0;}
+.ps-body strong{color:var(--cream);font-weight:400;}
+.ps-body a{color:var(--champagne);text-decoration:none;border-bottom:1px solid var(--border);transition:border-color .2s;}
+.ps-body a:hover{border-bottom-color:var(--champagne);}
+
+/* Callout box */
+.ps-callout{background:var(--carbon);border-left:2px solid var(--champagne);padding:24px 28px;margin:24px 0;font-size:12px;line-height:1.9;color:var(--text-body);}
+.ps-callout strong{color:var(--champagne);display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;font-weight:400;}
+
+/* Data list */
+.ps-data-list{display:flex;flex-direction:column;gap:2px;margin:20px 0;}
+.pdl-item{background:var(--carbon);padding:18px 22px;display:flex;align-items:flex-start;gap:14px;font-size:12px;color:var(--text-body);line-height:1.7;}
+.pdl-item::before{content:'◈';color:var(--champagne-dim);font-size:9px;flex-shrink:0;margin-top:3px;}
+
+/* Rights grid */
+.rights-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);margin:24px 0;}
+.rg-cell{background:var(--carbon);padding:24px 22px;}
+.rgc-title{font-family:'Cormorant SC',serif;font-size:13px;letter-spacing:1px;color:var(--champagne);margin-bottom:8px;}
+.rgc-body{font-size:11px;color:var(--text-body);line-height:1.8;}
+
+/* Contact box */
+.contact-box{background:var(--deep);border:1px solid var(--border);padding:36px 32px;margin-top:24px;position:relative;overflow:hidden;}
+.contact-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--champagne),var(--champagne-light),transparent);}
+.cb-title{font-family:'Cormorant SC',serif;font-size:16px;letter-spacing:2px;color:var(--champagne);margin-bottom:16px;}
+.cb-items{display:flex;flex-direction:column;gap:10px;}
+.cb-item{font-size:12px;color:var(--text-body);display:flex;align-items:flex-start;gap:12px;line-height:1.7;}
+.cb-item::before{content:'◈';color:var(--champagne-dim);font-size:9px;flex-shrink:0;margin-top:3px;}
+
+/* Divider */
+.section-rule{width:100%;height:1px;background:var(--border);margin:56px 0;}
+
+/* FOOTER */
+footer{background:#050505;border-top:1px solid var(--border);padding:60px 10vw 40px;}
+.footer-mini{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid var(--border);}
+.fm-brand{display:flex;align-items:center;gap:16px;}
+.fm-pg{font-family:'Cormorant SC',serif;font-size:18px;letter-spacing:2px;}
+.fm-div{width:1px;height:24px;background:var(--border);}
+.fm-sub{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--champagne);}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap;}
+.footer-links a{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-body);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--champagne);}
+.footer-legal{font-size:10px;color:rgba(242,237,228,.28);line-height:1.8;}
+
+@media(max-width:900px){
+  .page-wrap{grid-template-columns:1fr;}
+  .toc-sidebar{display:none;}
+  .policy-main{padding:60px 6vw 80px;}
+  nav{padding:0 24px;}
+  .nav-links{display:none!important;}
+  .nav-toggle{display:flex;}
+  .rights-grid{grid-template-columns:1fr;}
+  .footer-mini{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- DRAWER -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="drawer-header">
+    <div class="drawer-brand"><span class="db-name">The Ponte Group</span><span class="db-sub">Luxury Division</span></div>
+    <button class="drawer-close" onclick="closeDrawer()">✕</button>
+  </div>
+  <nav class="drawer-nav">
+    <a href="ponte-luxury-homepage.html">Home <span class="dn-arrow">→</span></a>
+    <a href="ponte-luxury-buyers.html">Buyers <span class="dn-arrow">→</span></a>
+    <a href="ponte-luxury-sellers.html">Sellers <span class="dn-arrow">→</span></a>
+    <a href="ponte-luxury-search.html">Property Search <span class="dn-arrow">→</span></a>
+    <a href="ponte-luxury-market.html">Market Intelligence <span class="dn-arrow">→</span></a>
+    <a href="ponte-luxury-partners.html">Preferred Partners <span class="dn-arrow">→</span></a>
+    <a href="ponte-luxury-blog.html">Insights &amp; Blog <span class="dn-arrow">→</span></a>
+  </nav>
+  <div class="drawer-cta">
+    <a href="ponte-luxury-contact.html">Book a Consultation</a>
+    <div class="drawer-contact">
+      <div class="dc-item"><span class="dc-icon">◈</span>The Ponte Group Luxury Division</div>
+      <div class="dc-item"><span class="dc-icon">◈</span>SE Massachusetts &amp; Rhode Island</div>
+      <div class="dc-item"><span class="dc-icon">◈</span><a href="tel:+15088139267" style="color:inherit;text-decoration:none;">(508) 813-9267</a></div>
+      <div class="dc-item"><span class="dc-icon">◈</span><a href="mailto:PGLuxuryNE@gmail.com" style="color:inherit;text-decoration:none;">PGLuxuryNE@gmail.com</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="ponte-luxury-homepage.html" class="nav-logo">
+    <div class="pg-mono">PG</div><div class="divider"></div>
+    <div class="brand-text"><span>The Ponte Group</span><span>Luxury Division</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="ponte-luxury-buyers.html">Buyers</a></li>
+    <li><a href="ponte-luxury-sellers.html">Sellers</a></li>
+    <li><a href="ponte-luxury-search.html">Search</a></li>
+    <li><a href="ponte-luxury-market.html">Market Intel</a></li>
+    <li><a href="ponte-luxury-partners.html">Partners</a></li>
+    <li><a href="ponte-luxury-blog.html">Insights</a></li>
+    <li><a href="ponte-luxury-contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu" onclick="openDrawer()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ═══ MAIN LAYOUT ═══ -->
+<div class="page-wrap">
+
+  <!-- TABLE OF CONTENTS SIDEBAR -->
+  <aside class="toc-sidebar">
+    <div class="toc-label">Contents</div>
+    <a class="toc-link active-toc" href="#overview">Overview</a>
+    <a class="toc-link" href="#information-we-collect">Information We Collect</a>
+    <a class="toc-link" href="#how-we-use">How We Use Your Information</a>
+    <a class="toc-link" href="#sharing">Sharing Your Information</a>
+    <a class="toc-link" href="#data-security">Data Security</a>
+    <a class="toc-link" href="#cookies">Cookies &amp; Tracking</a>
+    <a class="toc-link" href="#third-party">Third-Party Services</a>
+    <a class="toc-link" href="#your-rights">Your Rights</a>
+    <a class="toc-link" href="#retention">Data Retention</a>
+    <a class="toc-link" href="#minors">Minors</a>
+    <a class="toc-link" href="#changes">Changes to This Policy</a>
+    <a class="toc-link" href="#contact">Contact Us</a>
+    <div class="toc-updated">
+      <span>Last Updated</span>
+      <strong>May 2026</strong>
+    </div>
+  </aside>
+
+  <!-- POLICY CONTENT -->
+  <main class="policy-main">
+
+    <div class="policy-hero">
+      <div class="ph-eyebrow"><span class="line"></span><span>Legal</span></div>
+      <h1 class="ph-title">Privacy <em>Policy</em></h1>
+      <div class="ph-meta">
+        <span class="ph-date">Effective: May 1, 2026</span>
+        <span class="ph-date">Last Updated: May 2026</span>
+        <span class="ph-badge">Massachusetts &amp; Rhode Island</span>
+      </div>
+    </div>
+
+    <!-- 1. OVERVIEW -->
+    <section class="policy-section" id="overview">
+      <div class="ps-num">01</div>
+      <div class="ps-title">Overview</div>
+      <div class="ps-body">
+        <p>The Ponte Group Luxury Division, operating under The Ponte Group at Keller Williams South Watuppa ("we," "us," or "our"), is committed to protecting the privacy and personal information of every person who interacts with our website, inquires about our services, or engages with our team.</p>
+        <p>This Privacy Policy describes how we collect, use, disclose, and protect your personal information when you visit our website at pontegroupne.com and its associated pages, submit an inquiry or application, or otherwise interact with The Ponte Group Luxury Division.</p>
+        <p>By using our website or submitting your information through any form on this site, you consent to the practices described in this policy. If you do not agree with any portion of this policy, please do not submit personal information through our site.</p>
+        <div class="ps-callout">
+          <strong>Our Core Commitment</strong>
+          We will never sell your personal information. We will never share your information with third parties for their own marketing purposes. Your inquiry, your financial details, and your real estate goals are treated as strictly confidential professional communications from the moment you contact us.
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. INFORMATION WE COLLECT -->
+    <section class="policy-section" id="information-we-collect">
+      <div class="ps-num">02</div>
+      <div class="ps-title">Information We Collect</div>
+      <div class="ps-body">
+        <p>We collect information you voluntarily provide to us, as well as certain information that is automatically collected when you visit our website.</p>
+        <p><strong>Information you provide directly:</strong></p>
+        <div class="ps-data-list">
+          <div class="pdl-item">Contact information — name, email address, phone number, and mailing address</div>
+          <div class="pdl-item">Real estate inquiry details — property interest, price range, timeline, and market area preferences</div>
+          <div class="pdl-item">Financial context — general budget range or financing status, as voluntarily disclosed</div>
+          <div class="pdl-item">Professional information — for agent applicants, current brokerage, years licensed, and production history</div>
+          <div class="pdl-item">Referral information — for estate and probate referrals, property address, matter type, and relevant circumstances</div>
+          <div class="pdl-item">Communication preferences — how and when you prefer to be contacted</div>
+          <div class="pdl-item">Newsletter and content subscriptions — email address and general interest category</div>
+        </div>
+        <p><strong>Information collected automatically:</strong></p>
+        <div class="ps-data-list">
+          <div class="pdl-item">Browser type, operating system, and device information</div>
+          <div class="pdl-item">IP address and approximate geographic location (city/region level)</div>
+          <div class="pdl-item">Pages visited, time spent on pages, and referring URL</div>
+          <div class="pdl-item">Cookie and local storage data as described in our Cookies section below</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. HOW WE USE -->
+    <section class="policy-section" id="how-we-use">
+      <div class="ps-num">03</div>
+      <div class="ps-title">How We Use Your Information</div>
+      <div class="ps-body">
+        <p>We use your personal information solely for the purposes of operating our real estate practice and serving you effectively. Specifically, we use it to:</p>
+        <div class="ps-data-list">
+          <div class="pdl-item">Respond to your inquiry and schedule consultations or property showings</div>
+          <div class="pdl-item">Provide the real estate services you have requested or expressed interest in</div>
+          <div class="pdl-item">Send you market reports, property alerts, and content you have subscribed to receive</div>
+          <div class="pdl-item">Process and evaluate agent applications submitted through our careers page</div>
+          <div class="pdl-item">Route professional referrals to the appropriate member of our team</div>
+          <div class="pdl-item">Maintain records of our professional communications as required by Massachusetts and Rhode Island real estate licensing regulations</div>
+          <div class="pdl-item">Improve our website based on aggregate, anonymized usage data</div>
+          <div class="pdl-item">Comply with applicable laws and professional licensing obligations</div>
+        </div>
+        <p>We do not use your information for automated profiling, algorithmic decision-making, or any purpose unrelated to your real estate inquiry or our professional relationship.</p>
+      </div>
+    </section>
+
+    <!-- 4. SHARING -->
+    <section class="policy-section" id="sharing">
+      <div class="ps-num">04</div>
+      <div class="ps-title">Sharing Your Information</div>
+      <div class="ps-body">
+        <p>We share your personal information only in the following limited and specific circumstances:</p>
+        <div class="ps-data-list">
+          <div class="pdl-item"><strong>With our brokerage:</strong> The Ponte Group at Keller Williams South Watuppa, as required for licensed real estate operations and compliance</div>
+          <div class="pdl-item"><strong>With transaction parties:</strong> When you are actively engaged in a real estate transaction, information is shared with attorneys, title companies, lenders, and other transaction participants only as necessary and with your knowledge</div>
+          <div class="pdl-item"><strong>With our technology providers:</strong> Follow Up Boss (CRM), Dotloop (transaction management), and similar platforms that power our business — each subject to their own privacy policies and data processing agreements</div>
+          <div class="pdl-item"><strong>With Keller Williams:</strong> As required by our franchise agreement and the MLS systems through which we operate</div>
+          <div class="pdl-item"><strong>As required by law:</strong> In response to a valid court order, subpoena, or legal requirement from a government authority with jurisdiction</div>
+        </div>
+        <div class="ps-callout">
+          <strong>We Will Never</strong>
+          Sell your personal information to any third party. Share your information with advertisers, data brokers, or marketing aggregators. Use your contact information to add you to any third-party mailing list without your explicit consent.
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. DATA SECURITY -->
+    <section class="policy-section" id="data-security">
+      <div class="ps-num">05</div>
+      <div class="ps-title">Data Security</div>
+      <div class="ps-body">
+        <p>We take reasonable and appropriate measures to protect your personal information against unauthorized access, disclosure, alteration, or destruction. These measures include:</p>
+        <div class="ps-data-list">
+          <div class="pdl-item">Secure, password-protected access to our CRM and transaction management systems</div>
+          <div class="pdl-item">Limiting access to personal information to team members who require it to serve you</div>
+          <div class="pdl-item">Using industry-standard platforms with their own security certifications for data storage and communication</div>
+          <div class="pdl-item">Not storing sensitive financial information (credit card numbers, bank account details, or social security numbers) on our systems</div>
+        </div>
+        <p>While we employ reasonable security practices, no method of data transmission or storage is completely secure. We cannot guarantee absolute security but commit to promptly notifying you if we become aware of a data breach that affects your personal information, as required by applicable law.</p>
+      </div>
+    </section>
+
+    <!-- 6. COOKIES -->
+    <section class="policy-section" id="cookies">
+      <div class="ps-num">06</div>
+      <div class="ps-title">Cookies &amp; Tracking</div>
+      <div class="ps-body">
+        <p>Our website uses cookies and similar tracking technologies to improve your browsing experience and understand how visitors use our site. The types of cookies we may use include:</p>
+        <div class="ps-data-list">
+          <div class="pdl-item"><strong>Essential cookies:</strong> Required for the website to function properly, including navigation and form functionality</div>
+          <div class="pdl-item"><strong>Analytics cookies:</strong> Used to understand aggregate visitor behavior — which pages are most visited, how users navigate the site — on an anonymized basis</div>
+          <div class="pdl-item"><strong>Preference cookies:</strong> Remember your settings and preferences for future visits</div>
+        </div>
+        <p>We do not use third-party advertising cookies or allow advertisers to track your behavior across other websites through our site. You can control cookie settings through your browser preferences. Disabling cookies may affect some website functionality, including form pre-population.</p>
+      </div>
+    </section>
+
+    <!-- 7. THIRD PARTY -->
+    <section class="policy-section" id="third-party">
+      <div class="ps-num">07</div>
+      <div class="ps-title">Third-Party Services</div>
+      <div class="ps-body">
+        <p>Our website and business operations incorporate several third-party platforms and services. When you interact with these services, you are also subject to their respective privacy policies:</p>
+        <div class="ps-data-list">
+          <div class="pdl-item"><strong>Keller Williams / KW Command</strong> — kw.com/privacy</div>
+          <div class="pdl-item"><strong>Follow Up Boss</strong> — followupboss.com/privacy</div>
+          <div class="pdl-item"><strong>Dotloop</strong> — dotloop.com/privacy</div>
+          <div class="pdl-item"><strong>Zillow / Zillow Group</strong> — zillow.com/z/corp/privacy</div>
+          <div class="pdl-item"><strong>Google Analytics</strong> — policies.google.com/privacy</div>
+          <div class="pdl-item"><strong>Google Fonts</strong> — policies.google.com/privacy</div>
+        </div>
+        <p>Our website may contain links to third-party websites, including those of our preferred partners and vendors. We are not responsible for the privacy practices of those websites and encourage you to review their policies before submitting personal information.</p>
+      </div>
+    </section>
+
+    <!-- 8. YOUR RIGHTS -->
+    <section class="policy-section" id="your-rights">
+      <div class="ps-num">08</div>
+      <div class="ps-title">Your Rights</div>
+      <div class="ps-body">
+        <p>You have the following rights with respect to your personal information held by The Ponte Group Luxury Division:</p>
+        <div class="rights-grid">
+          <div class="rg-cell">
+            <div class="rgc-title">Right to Access</div>
+            <p class="rgc-body">You may request a copy of the personal information we hold about you at any time.</p>
+          </div>
+          <div class="rg-cell">
+            <div class="rgc-title">Right to Correction</div>
+            <p class="rgc-body">You may request correction of any inaccurate personal information we hold about you.</p>
+          </div>
+          <div class="rg-cell">
+            <div class="rgc-title">Right to Deletion</div>
+            <p class="rgc-body">You may request deletion of your personal information, subject to our legal and regulatory retention obligations.</p>
+          </div>
+          <div class="rg-cell">
+            <div class="rgc-title">Right to Opt Out</div>
+            <p class="rgc-body">You may opt out of marketing communications at any time by using the unsubscribe link in any email or contacting us directly.</p>
+          </div>
+          <div class="rg-cell">
+            <div class="rgc-title">Right to Portability</div>
+            <p class="rgc-body">You may request your personal information in a structured, machine-readable format where technically feasible.</p>
+          </div>
+          <div class="rg-cell">
+            <div class="rgc-title">Right to Withdraw Consent</div>
+            <p class="rgc-body">Where processing is based on your consent, you may withdraw that consent at any time without affecting prior processing.</p>
+          </div>
+        </div>
+        <p>To exercise any of these rights, contact us at the information provided in the Contact section below. We will respond to all verifiable requests within 30 days.</p>
+      </div>
+    </section>
+
+    <!-- 9. RETENTION -->
+    <section class="policy-section" id="retention">
+      <div class="ps-num">09</div>
+      <div class="ps-title">Data Retention</div>
+      <div class="ps-body">
+        <p>We retain your personal information for as long as necessary to fulfill the purposes described in this policy, or as required by applicable law and professional licensing obligations.</p>
+        <div class="ps-data-list">
+          <div class="pdl-item"><strong>Active client and transaction records</strong> — retained for a minimum of 7 years following the close of a transaction, as required by Massachusetts and Rhode Island real estate licensing regulations</div>
+          <div class="pdl-item"><strong>Inquiry and consultation records</strong> — retained for up to 3 years from the date of last contact, unless you request earlier deletion</div>
+          <div class="pdl-item"><strong>Newsletter subscriptions</strong> — retained until you unsubscribe or request deletion</div>
+          <div class="pdl-item"><strong>Agent application records</strong> — retained for 1 year from application date unless we extend an offer, in which case standard employment records retention applies</div>
+        </div>
+        <p>When retention periods expire or you request deletion, we securely destroy or anonymize your information in accordance with our data management practices.</p>
+      </div>
+    </section>
+
+    <!-- 10. MINORS -->
+    <section class="policy-section" id="minors">
+      <div class="ps-num">10</div>
+      <div class="ps-title">Minors</div>
+      <div class="ps-body">
+        <p>Our website and services are intended solely for adults aged 18 and older. We do not knowingly collect personal information from individuals under 18 years of age. If we become aware that we have collected personal information from a minor without appropriate consent, we will take steps to delete that information promptly.</p>
+        <p>If you believe we may have inadvertently collected information from a minor, please contact us immediately using the information in the Contact section below.</p>
+      </div>
+    </section>
+
+    <!-- 11. CHANGES -->
+    <section class="policy-section" id="changes">
+      <div class="ps-num">11</div>
+      <div class="ps-title">Changes to This Policy</div>
+      <div class="ps-body">
+        <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. When we make material changes, we will update the "Last Updated" date at the top of this page.</p>
+        <p>We encourage you to review this policy periodically. Your continued use of our website following any changes constitutes your acceptance of the updated policy. If we make changes that materially affect your rights, we will make reasonable efforts to notify active clients directly.</p>
+      </div>
+    </section>
+
+    <!-- 12. CONTACT -->
+    <section class="policy-section" id="contact">
+      <div class="ps-num">12</div>
+      <div class="ps-title">Contact Us</div>
+      <div class="ps-body">
+        <p>If you have questions, concerns, or requests regarding this Privacy Policy or your personal information, please contact us directly. We take all privacy inquiries seriously and will respond within 5 business days.</p>
+        <div class="contact-box">
+          <div class="cb-title">Privacy Inquiries</div>
+          <div class="cb-items">
+            <div class="cb-item">The Ponte Group Luxury Division</div>
+            <div class="cb-item">The Ponte Group at Keller Williams South Watuppa</div>
+            <div class="cb-item">Southeastern Massachusetts &amp; Rhode Island</div>
+            <div class="cb-item">For privacy inquiries: <a href="mailto:PGLuxuryNE@gmail.com" style="color:var(--champagne)">PGLuxuryNE@gmail.com</a></div>
+            <div class="cb-item">Attn: Privacy Officer · Scott Steele, CEO &amp; Operating Principal</div>
+            <div class="cb-item"><a href="tel:+15088139267" style="color:var(--champagne)">(508) 813-9267</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-rule"></div>
+
+    <p style="font-size:11px;color:var(--silver-dim);line-height:1.9;">This Privacy Policy was prepared for The Ponte Group Luxury Division operating under The Ponte Group at Keller Williams South Watuppa. Each Keller Williams office is independently owned and operated. This policy applies to this website and associated digital properties only. For questions about Keller Williams corporate privacy practices, please visit kw.com/privacy.</p>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-mini">
+    <div class="fm-brand">
+      <span class="fm-pg">The Ponte Group</span>
+      <div class="fm-div"></div>
+      <span class="fm-sub">Luxury Division</span>
+    </div>
+    <div class="footer-links">
+      <a href="ponte-luxury-homepage.html">Home</a>
+      <a href="ponte-luxury-contact.html">Contact Us</a>
+      <a href="ponte-luxury-sellers.html">Sellers</a>
+      <a href="ponte-luxury-buyers.html">Buyers</a>
+      <a href="ponte-luxury-estate.html">Estate &amp; Probate</a>
+      <a href="ponte-luxury-join.html">Join Our Team</a>
+    </div>
+  </div>
+  <p class="footer-legal">© 2026 The Ponte Group Luxury Division. All rights reserved. The Ponte Group at Keller Williams South Watuppa. Each Keller Williams office is independently owned and operated. Equal Housing Opportunity. Licensed in Massachusetts and Rhode Island. This Privacy Policy does not constitute legal advice.</p>
+</footer>
+
+<script>
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px';});
+document.querySelectorAll('a,button,.toc-link,.pdl-item,.rg-cell').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='16px';cur.style.height='16px';ring.style.width='54px';ring.style.height='54px';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.width='36px';ring.style.height='36px';});
+});
+// Active TOC tracking on scroll
+const sections=document.querySelectorAll('.policy-section');
+const tocLinks=document.querySelectorAll('.toc-link');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      tocLinks.forEach(l=>l.classList.remove('active-toc'));
+      const active=document.querySelector('.toc-link[href="#'+e.target.id+'"]');
+      if(active)active.classList.add('active-toc');
+    }
+  });
+},{rootMargin:'-20% 0px -70% 0px'});
+sections.forEach(s=>observer.observe(s));
+// Smooth scroll for TOC
+tocLinks.forEach(l=>{
+  l.addEventListener('click',e=>{
+    e.preventDefault();
+    const target=document.querySelector(l.getAttribute('href'));
+    if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+function openDrawer(){document.getElementById('mobileDrawer').classList.add('open');document.getElementById('drawerOverlay').classList.add('open');document.getElementById('navToggle').classList.add('open');document.body.style.overflow='hidden';}
+function closeDrawer(){document.getElementById('mobileDrawer').classList.remove('open');document.getElementById('drawerOverlay').classList.remove('open');document.getElementById('navToggle').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
+window.addEventListener('error',function(e){console.warn('Page error:',e.message);});
+</script>
+</body>
+</html>

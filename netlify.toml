@@ -1,4 +1,5 @@
 [build]
+  publish = "deploy"
   functions = "netlify/functions"
 
 [[headers]]

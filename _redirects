@@ -9,3 +9,8 @@
 /join        /ponte-luxury-join.html       200
 /privacy     /ponte-luxury-privacy.html    200
 /listing     /ponte-luxury-listing.html    200
+
+/team/scott  /ponte-luxury-agent-scott.html  200
+/team/cliff  /ponte-luxury-agent-cliff.html  200
+/team/alexis /ponte-luxury-agent-alexis.html 200
+/team        /ponte-luxury-agent-scott.html  200

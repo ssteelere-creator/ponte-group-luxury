@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxury Buyer Representation | The Ponte Group Luxury Division</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --obsidian:#080808; --deep:#0e0e0e; --carbon:#141414; --surface:#1a1a1a;
+    --border:rgba(180,150,90,0.18); --border-light:rgba(180,150,90,0.09);
+    --champagne:#C9A96E; --champagne-light:#DFC28A; --champagne-dim:rgba(201,169,110,0.6);
+    --crimson:#8B2020; --silver-dim:rgba(184,192,200,0.45);
+    --cream:#F2EDE4; --cream-dim:rgba(242,237,228,0.7); --text-body:rgba(242,237,228,0.72);
+    --nav-h:88px;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--obsidian);color:var(--cream);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;cursor:none;}
+  ::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:var(--obsidian);} ::-webkit-scrollbar-thumb{background:var(--champagne);border-radius:2px;}
+
+  /* CURSOR */
+  #cursor{position:fixed;width:10px;height:10px;background:var(--champagne);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:difference;}
+  #cursor-ring{position:fixed;width:36px;height:36px;border:1px solid var(--champagne-dim);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .06s,top .06s,width .3s,height .3s;}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 60px;z-index:1000;transition:background .4s;border-bottom:1px solid transparent;}
+  nav.scrolled{background:rgba(8,8,8,0.93);backdrop-filter:blur(18px);border-bottom-color:var(--border);}
+  .nav-logo{display:flex;align-items:center;gap:20px;text-decoration:none;}
+  .nav-logo .pg-mono{font-family:'Cormorant SC',serif;font-size:28px;font-weight:500;letter-spacing:2px;background:linear-gradient(135deg,#C9A96E 0%,#e8d5a3 40%,#C9A96E 70%,#a07840 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+  .nav-logo .divider{width:1px;height:32px;background:var(--border);}
+  .nav-logo .brand-text{display:flex;flex-direction:column;}
+  .nav-logo .brand-text span:first-child{font-family:'Cormorant SC',serif;font-size:13px;letter-spacing:3px;color:var(--cream);line-height:1.3;}
+  .nav-logo .brand-text span:last-child{font-size:9px;letter-spacing:4px;color:var(--champagne);text-transform:uppercase;}
+  .nav-links{display:flex;align-items:center;gap:36px;list-style:none;}
+  .nav-links a{font-size:10.5px;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;color:var(--cream-dim);text-decoration:none;position:relative;padding-bottom:3px;transition:color .3s;}
+  .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--champagne);transition:width .35s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--champagne);}
+  .nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+  .nav-cta{color:var(--champagne)!important;border:1px solid var(--champagne-dim)!important;padding:10px 22px!important;transition:background .3s,color .3s!important;}
+  .nav-cta:hover{background:var(--champagne)!important;color:var(--obsidian)!important;}
+  .nav-cta::after{display:none!important;}
+
+  /* SHARED */
+  .fade-up{opacity:0;transform:translateY(28px);transition:opacity .85s ease,transform .85s cubic-bezier(.16,1,.3,1);}
+  .fade-up.visible{opacity:1;transform:translateY(0);}
+  .fade-left{opacity:0;transform:translateX(-28px);transition:opacity .85s ease,transform .85s cubic-bezier(.16,1,.3,1);}
+  .fade-left.visible{opacity:1;transform:translateX(0);}
+  .fade-right{opacity:0;transform:translateX(28px);transition:opacity .85s ease,transform .85s cubic-bezier(.16,1,.3,1);}
+  .fade-right.visible{opacity:1;transform:translateX(0);}
+  .eyebrow{display:flex;align-items:center;gap:16px;margin-bottom:20px;}
+  .eyebrow .line{width:40px;height:1px;background:var(--champagne);flex-shrink:0;}
+  .eyebrow span{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--champagne);}
+  .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,60px);font-weight:300;line-height:1.1;margin-bottom:20px;}
+  .section-title em{font-style:italic;color:var(--champagne);}
+  .section-body{font-size:13px;font-weight:300;letter-spacing:.5px;line-height:2;color:var(--text-body);}
+  .btn-primary{font-family:'Jost',sans-serif;font-size:10px;font-weight:500;letter-spacing:3.5px;text-transform:uppercase;color:var(--obsidian);background:var(--champagne);border:none;padding:18px 42px;text-decoration:none;display:inline-block;transition:background .3s,transform .2s;cursor:none;}
+  .btn-primary:hover{background:var(--champagne-light);transform:translateY(-2px);}
+  .btn-outline{font-family:'Jost',sans-serif;font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--champagne);border:1px solid var(--champagne-dim);padding:17px 40px;text-decoration:none;display:inline-block;transition:background .3s,color .3s;cursor:none;}
+  .btn-outline:hover{background:var(--champagne);color:var(--obsidian);}
+  .arrow-link{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--champagne);text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:gap .3s;cursor:none;}
+  .arrow-link:hover{gap:16px;}
+
+  /* ═══ HERO ═══ */
+  .hero{
+    position:relative;min-height:100vh;padding-top:var(--nav-h);
+    display:flex;flex-direction:column;justify-content:center;
+    overflow:hidden;
+  }
+  .hero-bg{position:absolute;inset:0;z-index:0;}
+  /* Three-panel background */
+  .hero-panels{
+    position:absolute;inset:0;
+    display:grid;grid-template-columns:1fr 1fr 1fr;
+    gap:2px;opacity:.18;
+  }
+  .hero-panel{
+    position:relative;overflow:hidden;
+  }
+  .hero-panel::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(135deg,#1a1510,#241e10,#15100a);
+  }
+  .hero-panel:nth-child(2)::after{background:linear-gradient(135deg,#0e0e0e,#181510,#0a0808);}
+  .hero-panel:nth-child(3)::after{background:linear-gradient(135deg,#121210,#1c1a12,#0c0c08);}
+  /* Geometric line overlay */
+  .hero-overlay{
+    position:absolute;inset:0;z-index:1;
+    background:
+      radial-gradient(ellipse 70% 80% at 15% 50%,rgba(201,169,110,0.06) 0%,transparent 60%),
+      radial-gradient(ellipse 50% 60% at 80% 30%,rgba(139,32,32,0.05) 0%,transparent 50%),
+      rgba(8,8,8,0.82);
+  }
+  /* Diagonal accent */
+  .hero-diagonal{
+    position:absolute;right:0;top:0;bottom:0;width:38vw;z-index:1;
+    background:linear-gradient(135deg,transparent 0%,rgba(201,169,110,0.025) 50%,transparent 100%);
+    border-left:1px solid rgba(201,169,110,0.06);
+    transform:skewX(-6deg) translateX(10vw);
+  }
+  .hero-content{
+    position:relative;z-index:2;
+    padding:80px 10vw 160px;
+    max-width:760px;
+  }
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:14px;
+    border:1px solid var(--border);background:rgba(201,169,110,0.05);
+    padding:10px 20px;margin-bottom:36px;
+    animation:hReveal 1s .1s both;
+  }
+  .hero-badge span{font-size:9px;letter-spacing:3.5px;text-transform:uppercase;color:var(--champagne);}
+  @keyframes hReveal{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  .hero-title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(52px,6.2vw,96px);
+    font-weight:300;line-height:.98;letter-spacing:-2px;
+    margin-bottom:32px;
+    animation:hReveal 1s .25s both;
+  }
+  .hero-title em{font-style:italic;color:var(--champagne);}
+  .hero-title .indent{padding-left:72px;display:block;}
+  .hero-sub{
+    font-size:13px;line-height:2;color:var(--text-body);
+    max-width:460px;margin-bottom:52px;
+    animation:hReveal 1s .4s both;
+  }
+  .hero-actions{
+    display:flex;align-items:center;gap:28px;flex-wrap:wrap;
+    animation:hReveal 1s .55s both;
+  }
+  /* Floating property cards */
+  .hero-float{
+    position:absolute;right:8vw;top:50%;transform:translateY(-50%);
+    z-index:2;display:flex;flex-direction:column;gap:16px;
+    animation:hReveal 1s .7s both;
+  }
+  .float-card{
+    background:rgba(8,8,8,0.88);backdrop-filter:blur(12px);
+    border:1px solid var(--border);padding:20px 24px;
+    min-width:260px;
+  }
+  .float-card .fc-label{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--champagne-dim);margin-bottom:8px;display:block;}
+  .float-card .fc-val{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--champagne);line-height:1;}
+  .float-card .fc-sub{font-size:10px;color:var(--silver-dim);margin-top:4px;letter-spacing:.5px;}
+  /* Vertical stat strip */
+  .hero-strip{
+    position:absolute;bottom:0;left:0;right:0;z-index:3;
+    display:grid;grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--border);
+    background:rgba(8,8,8,0.7);backdrop-filter:blur(8px);
+  }
+  .strip-item{
+    padding:24px 32px;border-right:1px solid var(--border);
+    display:flex;align-items:center;gap:16px;
+  }
+  .strip-item:last-child{border-right:none;}
+  .strip-n{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;color:var(--champagne);line-height:1;flex-shrink:0;}
+  .strip-l{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--silver-dim);line-height:1.6;}
+
+  /* ═══ WHY PONTE — REASONS ═══ */
+  .reasons{
+    background:var(--deep);
+    border-top:1px solid var(--border);
+    padding:120px 10vw;
+  }
+  .reasons-layout{display:grid;grid-template-columns:1fr 1.6fr;gap:100px;align-items:start;}
+  .reasons-left{position:sticky;top:120px;}
+  .reasons-grid{display:flex;flex-direction:column;gap:2px;}
+  .reason-card{
+    background:var(--carbon);padding:40px 44px;
+    border-left:2px solid transparent;
+    transition:border-color .35s,background .35s;cursor:none;
+  }
+  .reason-card:hover{border-left-color:var(--champagne);background:#1a1810;}
+  .reason-num{font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:3px;color:var(--champagne-dim);margin-bottom:16px;display:block;}
+  .reason-title{font-family:'Cormorant SC',serif;font-size:18px;letter-spacing:1.5px;margin-bottom:12px;transition:color .3s;}
+  .reason-card:hover .reason-title{color:var(--champagne);}
+  .reason-desc{font-size:12px;line-height:1.9;color:var(--text-body);}
+
+  /* ═══ BUYER JOURNEY ═══ */
+  .journey{
+    background:var(--obsidian);
+    border-top:1px solid var(--border);
+    padding:120px 10vw;
+  }
+  .journey-header{margin-bottom:80px;}
+  .journey-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);
+    gap:2px;background:var(--border);
+  }
+  .journey-step{
+    background:var(--carbon);padding:52px 48px;
+    position:relative;overflow:hidden;cursor:none;
+    transition:background .4s;
+  }
+  .journey-step:hover{background:#1c1a16;}
+  .journey-step::before{
+    content:'';position:absolute;bottom:0;left:0;width:0;height:2px;
+    background:linear-gradient(to right,var(--champagne),var(--champagne-light));
+    transition:width .5s cubic-bezier(.16,1,.3,1);
+  }
+  .journey-step:hover::before{width:100%;}
+  .js-phase{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--champagne);margin-bottom:10px;display:block;}
+  .js-num{
+    font-family:'Cormorant Garamond',serif;
+    font-size:64px;font-weight:300;color:rgba(201,169,110,0.07);
+    position:absolute;top:20px;right:28px;line-height:1;
+    pointer-events:none;user-select:none;
+    transition:color .4s;
+  }
+  .journey-step:hover .js-num{color:rgba(201,169,110,0.12);}
+  .js-title{font-family:'Cormorant SC',serif;font-size:20px;letter-spacing:1px;margin-bottom:16px;}
+  .js-desc{font-size:12px;line-height:1.9;color:var(--text-body);margin-bottom:24px;}
+  .js-bullets{list-style:none;display:flex;flex-direction:column;gap:9px;}
+  .js-bullets li{font-size:11px;color:var(--silver-dim);display:flex;align-items:flex-start;gap:10px;line-height:1.6;}
+  .js-bullets li::before{content:'—';color:var(--champagne-dim);flex-shrink:0;font-size:10px;margin-top:1px;}
+
+  /* ═══ MARKET AREAS ═══ */
+  .areas{
+    background:var(--carbon);
+    border-top:1px solid var(--border);
+    padding:120px 10vw;
+  }
+  .areas-header{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:80px;}
+  .areas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);}
+  .area-card{
+    background:var(--deep);padding:44px 36px;
+    position:relative;overflow:hidden;cursor:none;
+    transition:background .4s;
+  }
+  .area-card::after{
+    content:'';position:absolute;top:0;left:0;right:0;height:1px;
+    background:linear-gradient(to right,transparent,var(--champagne),transparent);
+    transform:scaleX(0);transition:transform .45s cubic-bezier(.16,1,.3,1);
+  }
+  .area-card:hover{background:#181610;}
+  .area-card:hover::after{transform:scaleX(1);}
+  .area-state{font-size:8px;letter-spacing:3.5px;text-transform:uppercase;color:var(--champagne-dim);margin-bottom:12px;display:block;}
+  .area-name{font-family:'Cormorant SC',serif;font-size:22px;letter-spacing:2px;margin-bottom:8px;transition:color .3s;}
+  .area-card:hover .area-name{color:var(--champagne);}
+  .area-type{font-size:10px;color:var(--silver-dim);letter-spacing:1px;margin-bottom:20px;}
+  .area-desc{font-size:11px;color:var(--text-body);line-height:1.8;margin-bottom:24px;}
+  .area-stats{display:flex;gap:24px;padding-top:20px;border-top:1px solid var(--border-light);}
+  .area-stat{display:flex;flex-direction:column;gap:4px;}
+  .area-stat-n{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--champagne);line-height:1;}
+  .area-stat-l{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--silver-dim);}
+
+  /* ═══ ACCESS ADVANTAGE ═══ */
+  .access{
+    background:var(--deep);
+    border-top:1px solid var(--border);
+    padding:120px 10vw;
+  }
+  .access-layout{display:grid;grid-template-columns:1.2fr 1fr;gap:100px;align-items:center;margin-top:72px;}
+  /* Animated concentric rings graphic */
+  .access-graphic{
+    aspect-ratio:1;max-width:480px;
+    position:relative;display:flex;align-items:center;justify-content:center;
+  }
+  .ring{
+    position:absolute;border-radius:50%;border:1px solid;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .ring-1{width:92%;height:92%;border-color:rgba(201,169,110,0.1);}
+  .ring-2{width:74%;height:74%;border-color:rgba(201,169,110,0.15);animation:ringRotate 20s linear infinite;}
+  .ring-3{width:56%;height:56%;border-color:rgba(201,169,110,0.22);animation:ringRotate 14s linear infinite reverse;}
+  .ring-4{width:38%;height:38%;border-color:rgba(201,169,110,0.3);animation:ringRotate 9s linear infinite;}
+  .ring-center{
+    width:22%;height:22%;
+    background:radial-gradient(circle,rgba(201,169,110,0.25),rgba(201,169,110,0.05));
+    border-radius:50%;border:1px solid var(--champagne-dim);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant SC',serif;font-size:16px;color:var(--champagne);letter-spacing:1px;
+  }
+  /* Ring dots */
+  .ring-dot{
+    position:absolute;width:6px;height:6px;background:var(--champagne);border-radius:50%;
+    top:-3px;left:50%;transform:translateX(-50%);
+  }
+  @keyframes ringRotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+  /* Ring labels */
+  .ring-label{
+    position:absolute;font-size:9px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--champagne-dim);white-space:nowrap;
+  }
+  .access-features{display:flex;flex-direction:column;gap:28px;}
+  .access-feat{
+    display:flex;gap:24px;padding-bottom:28px;
+    border-bottom:1px solid var(--border-light);
+  }
+  .access-feat:last-child{border-bottom:none;padding-bottom:0;}
+  .af-icon{
+    width:44px;height:44px;flex-shrink:0;
+    border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--champagne);
+    margin-top:2px;
+  }
+  .af-title{font-family:'Cormorant SC',serif;font-size:16px;letter-spacing:1px;margin-bottom:8px;}
+  .af-desc{font-size:12px;line-height:1.9;color:var(--text-body);}
+
+  /* ═══ OFF-MARKET BANNER ═══ */
+  .off-market{
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    position:relative;overflow:hidden;
+  }
+  .om-inner{
+    padding:100px 10vw;
+    background:linear-gradient(135deg,var(--carbon) 0%,var(--obsidian) 60%);
+    display:grid;grid-template-columns:1fr auto;gap:80px;align-items:center;
+  }
+  .om-inner::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse 70% 100% at 90% 50%,rgba(201,169,110,0.04) 0%,transparent 60%);
+  }
+  .om-label{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--champagne);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+  .om-label::before{content:'';display:block;width:32px;height:1px;background:var(--champagne);}
+  .om-title{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,3.8vw,58px);font-weight:300;line-height:1.1;margin-bottom:20px;}
+  .om-title em{font-style:italic;color:var(--champagne);}
+  .om-desc{font-size:13px;line-height:2;color:var(--text-body);max-width:520px;}
+  .om-right{display:flex;flex-direction:column;gap:16px;flex-shrink:0;align-items:flex-end;}
+
+  /* ═══ FEATURED PROPERTIES ═══ */
+  .featured{
+    background:var(--obsidian);
+    border-top:1px solid var(--border);
+    padding:120px 10vw;
+  }
+  .feat-header{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:80px;}
+  .feat-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:2px;background:var(--border);}
+  .feat-main{
+    background:var(--carbon);
+    position:relative;overflow:hidden;cursor:none;min-height:520px;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    transition:background .4s;
+  }
+  .feat-main::before{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(to top,rgba(8,8,8,0.95) 0%,rgba(8,8,8,.4) 50%,transparent 100%);
+    z-index:1;
+  }
+  .feat-main-bg{
+    position:absolute;inset:0;
+    background:linear-gradient(135deg,#1a1510 0%,#251e12 40%,#181210 100%);
+  }
+  .feat-main-bg::after{
+    content:'';position:absolute;inset:0;
+    background:repeating-linear-gradient(-45deg,transparent,transparent 50px,rgba(201,169,110,0.015) 50px,rgba(201,169,110,0.015) 51px);
+  }
+  .feat-main-info{position:relative;z-index:2;padding:44px 44px;}
+  .feat-tag{display:inline-block;background:rgba(201,169,110,0.12);border:1px solid var(--champagne-dim);padding:6px 16px;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--champagne);margin-bottom:16px;}
+  .feat-price{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;color:var(--champagne);line-height:1;margin-bottom:8px;}
+  .feat-address{font-family:'Cormorant SC',serif;font-size:18px;letter-spacing:1px;margin-bottom:4px;}
+  .feat-location{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--silver-dim);margin-bottom:20px;}
+  .feat-specs{display:flex;gap:20px;}
+  .feat-spec{font-size:10px;color:var(--text-body);letter-spacing:.5px;}
+  .feat-spec strong{color:var(--cream);font-weight:400;display:block;font-size:13px;}
+  /* Side stack */
+  .feat-side{display:flex;flex-direction:column;gap:2px;background:var(--border);}
+  .feat-small{
+    background:var(--carbon);padding:32px 32px;flex:1;
+    cursor:none;transition:background .4s;
+    position:relative;border-left:2px solid transparent;
+    transition:border-color .3s,background .3s;
+  }
+  .feat-small:hover{background:#1c1a16;border-left-color:var(--champagne);}
+  .feat-small-price{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;color:var(--champagne);margin-bottom:4px;}
+  .feat-small-addr{font-size:11px;color:var(--cream);letter-spacing:.5px;margin-bottom:3px;}
+  .feat-small-loc{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--silver-dim);margin-bottom:14px;}
+  .feat-small-specs{display:flex;gap:16px;}
+  .feat-small-spec{font-size:10px;color:var(--text-body);}
+  .feat-small-spec strong{color:var(--cream);font-weight:400;display:block;font-size:11px;}
+
+  /* ═══ BUYER TEAM ═══ */
+  .buyer-team{
+    background:var(--deep);
+    border-top:1px solid var(--border);
+    padding:120px 10vw;
+  }
+  .bt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:72px;background:var(--border);}
+  .bt-card{background:var(--carbon);overflow:hidden;cursor:none;}
+  .bt-card.lead{background:#111;}
+  .bt-photo{
+    height:340px;overflow:hidden;
+    background:linear-gradient(180deg,#0f0f0f 0%,#161410 100%);
+    display:flex;align-items:flex-end;justify-content:center;
+  }
+  .bt-photo img{width:100%;height:100%;object-fit:cover;object-position:center 10%;filter:grayscale(5%) contrast(1.05);mix-blend-mode:luminosity;transition:transform .6s cubic-bezier(.16,1,.3,1),mix-blend-mode .3s;}
+  .bt-card:hover .bt-photo img{transform:scale(1.04);mix-blend-mode:normal;}
+  .bt-info{padding:40px 36px 36px;position:relative;}
+  .bt-card.lead .bt-info::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--champagne),var(--champagne-light),var(--champagne));}
+  .bt-role{font-size:9px;letter-spacing:3.5px;text-transform:uppercase;color:var(--champagne);margin-bottom:10px;display:block;}
+  .bt-name{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;margin-bottom:6px;}
+  .bt-title{font-size:11px;letter-spacing:.5px;color:var(--silver-dim);margin-bottom:20px;line-height:1.6;}
+  .bt-bio{font-size:12px;line-height:1.9;color:var(--text-body);padding-bottom:24px;border-bottom:1px solid var(--border);margin-bottom:24px;}
+  .bt-link{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--champagne);text-decoration:none;display:flex;align-items:center;gap:10px;transition:gap .3s;cursor:none;}
+  .bt-link:hover{gap:16px;}
+
+  /* ═══ TESTIMONIALS ═══ */
+  .testimonials{background:var(--carbon);border-top:1px solid var(--border);padding:120px 10vw;}
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:72px;background:var(--border);}
+  .testi-card{background:var(--deep);padding:48px 40px;}
+  .stars{color:var(--champagne);font-size:11px;letter-spacing:3px;margin-bottom:16px;display:block;}
+  .testi-qm{font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:300;color:var(--champagne-dim);line-height:.7;margin-bottom:20px;display:block;}
+  .testi-text{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:300;font-style:italic;line-height:1.7;color:var(--cream-dim);margin-bottom:32px;}
+  .testi-author{display:flex;align-items:center;gap:14px;}
+  .testi-line{width:28px;height:1px;background:var(--champagne);flex-shrink:0;}
+  .testi-name{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--silver-dim);}
+  .testi-result{font-size:9px;letter-spacing:1.5px;color:var(--champagne-dim);margin-top:3px;}
+
+  /* ═══ CONSULTATION CTA ═══ */
+  .consult-cta{
+    background:var(--obsidian);
+    border-top:1px solid var(--border);
+    padding:0;
+  }
+  .consult-inner{
+    display:grid;grid-template-columns:1fr 1fr;
+    min-height:500px;
+  }
+  .ci-left{
+    padding:100px 10vw;
+    background:linear-gradient(135deg,var(--carbon),var(--deep));
+    display:flex;flex-direction:column;justify-content:center;
+    border-right:1px solid var(--border);position:relative;
+  }
+  .ci-left::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 0% 50%,rgba(201,169,110,0.04) 0%,transparent 60%);pointer-events:none;}
+  .ci-title{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,3.5vw,52px);font-weight:300;line-height:1.15;margin-bottom:20px;}
+  .ci-title em{font-style:italic;color:var(--champagne);}
+  .ci-desc{font-size:13px;line-height:2;color:var(--text-body);margin-bottom:44px;max-width:400px;}
+  .ci-right{
+    padding:80px 8vw;
+    background:var(--carbon);
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .ci-form{display:flex;flex-direction:column;gap:16px;}
+  .ci-form-title{font-family:'Cormorant SC',serif;font-size:16px;letter-spacing:2px;margin-bottom:6px;}
+  .ci-form-sub{font-size:11px;color:var(--text-body);line-height:1.7;margin-bottom:20px;}
+  .form-field{display:flex;flex-direction:column;gap:6px;}
+  .form-field label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--champagne-dim);}
+  .form-field input,.form-field select,.form-field textarea{background:var(--deep);border:1px solid var(--border);color:var(--cream);font-family:'Jost',sans-serif;font-size:12px;padding:14px 18px;outline:none;cursor:none;transition:border-color .3s;appearance:none;-webkit-appearance:none;}
+  .form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:var(--champagne);}
+  .form-field input::placeholder,.form-field textarea::placeholder{color:var(--silver-dim);font-weight:300;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .form-field textarea{resize:none;height:80px;}
+  .form-submit{background:var(--champagne);color:var(--obsidian);border:none;font-family:'Jost',sans-serif;font-size:10px;font-weight:500;letter-spacing:3.5px;text-transform:uppercase;padding:18px 40px;cursor:none;transition:background .3s,transform .2s;align-self:flex-start;}
+  .form-submit:hover{background:var(--champagne-light);transform:translateY(-1px);}
+  .form-disclaimer{font-size:9px;color:rgba(242,237,228,.28);letter-spacing:.5px;line-height:1.8;margin-top:6px;}
+
+  /* ═══ FOOTER ═══ */
+  footer{background:#050505;border-top:1px solid var(--border);padding:80px 10vw 40px;}
+  .footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px;padding-bottom:60px;border-bottom:1px solid var(--border);}
+  .footer-brand .brand-name{font-family:'Cormorant SC',serif;font-size:22px;letter-spacing:3px;margin-bottom:6px;}
+  .footer-brand .brand-sub{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--champagne);margin-bottom:24px;display:block;}
+  .footer-brand p{font-size:12px;line-height:1.9;color:var(--text-body);}
+  .footer-col h4{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--champagne);margin-bottom:24px;}
+  .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:12px;}
+  .footer-col ul li a{font-size:12px;color:var(--text-body);text-decoration:none;transition:color .3s;}
+  .footer-col ul li a:hover{color:var(--champagne);}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap;}
+  .footer-legal{font-size:10px;color:rgba(242,237,228,.28);line-height:1.8;max-width:640px;}
+  .footer-credit{font-size:10px;color:rgba(242,237,228,.2);letter-spacing:1px;text-align:right;}
+
+  /* RESPONSIVE */
+  @media(max-width:1100px){
+    .hero-float{display:none;}
+    .reasons-layout{grid-template-columns:1fr;gap:48px;}
+    .reasons-left{position:static;}
+    .areas-header,.feat-header{grid-template-columns:1fr;gap:24px;}
+    .areas-grid{grid-template-columns:1fr 1fr;}
+    .feat-grid{grid-template-columns:1fr;}
+    .feat-main{min-height:380px;}
+    .access-layout{grid-template-columns:1fr;gap:60px;}
+    .access-graphic{max-width:320px;margin:0 auto;}
+    .om-inner{grid-template-columns:1fr;}
+    .bt-grid,.testi-grid{grid-template-columns:1fr 1fr;}
+    .consult-inner{grid-template-columns:1fr;}
+    .ci-left{padding:80px 8vw;}
+    .footer-top{grid-template-columns:1fr 1fr;}
+    .hero-strip{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(max-width:768px){
+    nav{padding:0 24px;} .nav-links{display:none;}
+    .journey-grid,.bt-grid,.testi-grid{grid-template-columns:1fr;}
+    .areas-grid{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;}
+    .hero-strip{display:none;}
+  }
+
+  /* ── MOBILE NAV TOGGLE ── */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: none;
+    padding: 6px;
+    background: none;
+    border: none;
+    z-index: 1001;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--cream);
+    transition: transform .35s cubic-bezier(.16,1,.3,1), opacity .25s, width .3s;
+    transform-origin: center;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; width: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  /* ── MOBILE DRAWER ── */
+  .mobile-drawer {
+    position: fixed;
+    top: 0; right: 0; bottom: 0;
+    width: min(340px, 88vw);
+    background: var(--carbon);
+    border-left: 1px solid var(--border);
+    z-index: 1100;
+    transform: translateX(100%);
+    transition: transform .45s cubic-bezier(.16,1,.3,1);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  .mobile-drawer.open { transform: translateX(0); }
+  .mobile-drawer::-webkit-scrollbar { width: 3px; }
+  .mobile-drawer::-webkit-scrollbar-thumb { background: var(--champagne-dim); }
+
+  .drawer-header {
+    padding: 28px 32px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    background: var(--carbon);
+    z-index: 2;
+  }
+  .drawer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .drawer-brand .db-name {
+    font-family: 'Cormorant SC', serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: var(--cream);
+  }
+  .drawer-brand .db-sub {
+    font-size: 8px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--champagne);
+  }
+  .drawer-close {
+    width: 32px; height: 32px;
+    border: 1px solid var(--border);
+    background: none;
+    color: var(--cream-dim);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: none;
+    transition: border-color .2s, color .2s;
+    flex-shrink: 0;
+  }
+  .drawer-close:hover { border-color: var(--champagne); color: var(--champagne); }
+
+  .drawer-nav {
+    padding: 16px 0;
+    flex: 1;
+  }
+  .drawer-nav a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-light);
+    transition: color .2s, background .2s, padding-left .2s;
+  }
+  .drawer-nav a:hover {
+    color: var(--champagne);
+    background: rgba(201,169,110,0.03);
+    padding-left: 38px;
+  }
+  .drawer-nav a.active-drawer {
+    color: var(--champagne);
+    border-left: 2px solid var(--champagne);
+  }
+  .drawer-nav a .dn-arrow { font-size: 14px; opacity: .4; transition: opacity .2s; }
+  .drawer-nav a:hover .dn-arrow { opacity: 1; }
+
+  .drawer-cta {
+    padding: 24px 32px 32px;
+    border-top: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .drawer-cta a {
+    display: block;
+    text-align: center;
+    background: var(--champagne);
+    color: var(--obsidian);
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    padding: 17px 28px;
+    text-decoration: none;
+    transition: background .3s;
+    margin-bottom: 12px;
+  }
+  .drawer-cta a:hover { background: var(--champagne-light); }
+  .drawer-cta .drawer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .drawer-cta .dc-item {
+    font-size: 11px;
+    color: var(--text-body);
+    letter-spacing: .5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .drawer-cta .dc-item .dc-icon { color: var(--champagne-dim); font-size: 11px; }
+
+  /* ── DRAWER OVERLAY ── */
+  .drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(4px);
+    z-index: 1050;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .4s ease;
+  }
+  .drawer-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  @media (max-width: 900px) {
+    .nav-toggle { display: flex; }
+    .nav-links { display: none !important; }
+  }
+  @media (min-width: 901px) {
+    .mobile-drawer, .drawer-overlay { display: none !important; }
+  }
+</style>
+</head>
+<body>
+
+
+<!-- ── MOBILE DRAWER ── -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="drawer-header">
+    <div class="drawer-brand">
+      <span class="db-name">The Ponte Group</span>
+      <span class="db-sub">Luxury Division</span>
+    </div>
+    <button class="drawer-close" onclick="closeDrawer()">✕</button>
+  </div>
+  <nav class="drawer-nav">
+    <a href="ponte-luxury-homepage.html">Home <span class="dn-arrow">→</span></a>
+    <a href="ponte-luxury-buyers.html">Buyers <span class="dn-arrow">→</span></a>
+    <a href="ponte-luxury-sellers.html">Sellers <span class="dn-arrow">→</span></a>
+    <a href="https://ssteele.pontegroupne.com/property-search/results/?searchtype=2&searchid=1281413" target="_blank">Property Search <span class="dn-arrow">→</span></a>
+    <a href="ponte-luxury-market.html">Market Intelligence <span class="dn-arrow">→</span></a>
+    <a href="ponte-luxury-partners.html">Preferred Partners <span class="dn-arrow">→</span></a>
+    <a href="ponte-luxury-blog.html">Insights &amp; Blog <span class="dn-arrow">→</span></a>
+  </nav>
+  <div class="drawer-cta">
+    <a href="ponte-luxury-sellers.html#valuation">Request a Valuation</a>
+    <a href="ponte-luxury-contact.html" style="background:none;border:1px solid var(--champagne-dim);color:var(--champagne);margin-top:-4px;">Book a Consultation</a>
+    <div class="drawer-contact">
+      <div class="dc-item"><span class="dc-icon">◈</span>The Ponte Group Luxury Division</div>
+      <div class="dc-item"><span class="dc-icon">◈</span>Keller Williams South Watuppa</div>
+      <div class="dc-item"><span class="dc-icon">◈</span>SE Massachusetts &amp; Rhode Island</div>
+      <div class="dc-item"><span class="dc-icon">◈</span><a href="tel:+15088139267" style="color:inherit;text-decoration:none;">(508) 813-9267</a></div>
+      <div class="dc-item"><span class="dc-icon">◈</span><a href="mailto:PGLuxuryNE@gmail.com" style="color:inherit;text-decoration:none;">PGLuxuryNE@gmail.com</a></div>
+    </div>
+  </div>
+</div>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- ═══ NAV ═══ -->
+<nav id="mainNav">
+  <a href="ponte-luxury-homepage.html" class="nav-logo">
+    <div class="pg-mono">PG</div>
+    <div class="divider"></div>
+    <div class="brand-text">
+      <span>The Ponte Group</span>
+      <span>Luxury Division</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#" class="active">Buyers</a></li>
+    <li><a href="ponte-luxury-sellers.html">Sellers</a></li>
+    <li><a href="https://ssteele.pontegroupne.com/property-search/results/?searchtype=2&searchid=1281413" target="_blank">Search</a></li>
+    <li><a href="ponte-luxury-market.html">Market Intel</a></li>
+    <li><a href="ponte-luxury-partners.html">Partners</a></li>
+    <li><a href="ponte-luxury-blog.html">Insights</a></li>
+    <li><a href="#consult" class="nav-cta">Book a Consultation</a></li>
+  </ul>
+</nav>
+
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-panels">
+      <div class="hero-panel"></div>
+      <div class="hero-panel"></div>
+      <div class="hero-panel"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-diagonal"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span>◈</span>
+      <span>Exclusive Buyer Representation · SE Massachusetts &amp; Rhode Island</span>
+    </div>
+
+    <h1 class="hero-title">
+      Find the Home
+      <span class="indent">You <em>Deserve.</em></span>
+    </h1>
+
+    <p class="hero-sub">Access to the region's finest properties — including homes that never reach the public market. Our buyer specialists combine deep local intelligence with the global reach of KW Luxury International to find exactly what you're looking for.</p>
+
+    <div class="hero-actions">
+      <a href="#consult" class="btn-primary">Begin Your Search</a>
+      <a href="#" onclick="event.preventDefault();const el=document.getElementById('journey');if(el)el.scrollIntoView({behavior:'smooth'})" class="arrow-link">How We Work</a>
+    </div>
+  </div>
+
+  <!-- Floating intel cards -->
+  <div class="hero-float">
+    <div class="float-card">
+      <span class="fc-label">Active Luxury Inventory</span>
+      <div class="fc-val">$1M – $5M+</div>
+      <div class="fc-sub">SE Massachusetts &amp; Rhode Island</div>
+    </div>
+    <div class="float-card">
+      <span class="fc-label">Off-Market Access</span>
+      <div class="fc-val">Exclusive Network</div>
+      <div class="fc-sub">Properties before they list publicly</div>
+    </div>
+    <div class="float-card">
+      <span class="fc-label">Average Buyer Savings</span>
+      <div class="fc-val">2.4% Below Ask</div>
+      <div class="fc-sub">Through expert negotiation</div>
+    </div>
+  </div>
+
+  <div class="hero-strip">
+    <div class="strip-item">
+      <div class="strip-n">100<span style="font-size:14px">%</span></div>
+      <div class="strip-l">Compensation<br>Discussed at Consult</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-n">Off</div>
+      <div class="strip-l">Market Access<br>Available</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-n">50<span style="font-size:14px">+</span></div>
+      <div class="strip-l">Countries in<br>KW Network</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-n">1:1</div>
+      <div class="strip-l">Dedicated<br>Buyer Advisor</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ WHY PONTE ═══ -->
+<section class="reasons" id="why">
+  <div class="reasons-layout">
+    <div class="reasons-left fade-left">
+      <div class="eyebrow"><span class="line"></span><span>The Buyer Advantage</span></div>
+      <h2 class="section-title">Why Discerning<br>Buyers Choose<br><em>The Ponte Group</em></h2>
+      <p class="section-body" style="margin-top:16px;max-width:360px">In the luxury market, your representation determines your outcome. The right advisor means access, intelligence, and advocacy that the average buyer simply doesn't have.</p>
+      <div style="margin-top:48px;">
+        <a href="#consult" class="btn-primary">Start the Conversation</a>
+      </div>
+    </div>
+    <div class="reasons-grid fade-right">
+      <div class="reason-card">
+        <span class="reason-num">01</span>
+        <div class="reason-title">Access Before the Market</div>
+        <p class="reason-desc">Our private buyer network means you see properties before they hit Zillow — giving you a decisive advantage in competitive inventory environments. Relationships with builders, estate attorneys, and fellow luxury agents surface opportunities that never go public.</p>
+      </div>
+      <div class="reason-card">
+        <span class="reason-num">02</span>
+        <div class="reason-title">Intelligence, Not Just Listings</div>
+        <p class="reason-desc">We deliver more than MLS results. You get neighborhood-level pricing analysis, absorption data, seller motivation intelligence, and a clear read on whether a property is positioned fairly — so you never overpay and never miss a hidden opportunity.</p>
+      </div>
+      <div class="reason-card">
+        <span class="reason-num">03</span>
+        <div class="reason-title">Expert Negotiation, Every Time</div>
+        <p class="reason-desc">Luxury transactions are complex. Contract terms, inspection leverage, appraisal gaps, seller concessions — every element is negotiated with precision. Our buyers consistently close below ask or with superior terms in competitive situations.</p>
+      </div>
+      <div class="reason-card">
+        <span class="reason-num">04</span>
+        <div class="reason-title">Concierge-Level Experience</div>
+        <p class="reason-desc">From coordinating private showings on your schedule to navigating complex estate sales or new construction contracts, every detail is handled. You focus on finding the right home. We handle everything else.</p>
+      </div>
+      <div class="reason-card">
+        <span class="reason-num">05</span>
+        <div class="reason-title">Preferred Partner Network</div>
+        <p class="reason-desc">Vetted mortgage specialists, luxury attorneys, inspectors, contractors, and designers — all accessible through one relationship. Our preferred partner network turns a complex purchase into a seamless experience, start to finish.</p>
+      </div>
+      <div class="reason-card">
+        <span class="reason-num">06</span>
+        <div class="reason-title">Transparent Compensation</div>
+        <p class="reason-desc">Buyer agent compensation is discussed openly at your initial consultation. Depending on the transaction, the seller may offer compensation — and in cases where they do not, we will outline all options clearly so you can make a fully informed decision before moving forward.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ BUYER JOURNEY ═══ -->
+<section class="journey" id="journey">
+  <div class="journey-header fade-up">
+    <div class="eyebrow"><span class="line"></span><span>The Buyer Experience</span></div>
+    <h2 class="section-title">Your Path to the<br><em>Perfect Property</em></h2>
+    <p class="section-body" style="max-width:520px">A structured, curated process designed to find and secure your ideal home — with no wasted time and complete confidence at every step.</p>
+  </div>
+
+  <div class="journey-grid">
+    <div class="journey-step fade-up">
+      <span class="js-num">01</span>
+      <span class="js-phase">Step One</span>
+      <div class="js-title">Discovery Consultation</div>
+      <p class="js-desc">We begin with a private, in-depth conversation about your goals, must-haves, lifestyle requirements, and timeline. This shapes everything that follows.</p>
+      <ul class="js-bullets">
+        <li>Lifestyle, location, and property criteria deep-dive</li>
+        <li>Budget &amp; financing pre-qualification alignment</li>
+        <li>Timeline and flexibility assessment</li>
+        <li>Off-market opportunity briefing</li>
+      </ul>
+    </div>
+    <div class="journey-step fade-up">
+      <span class="js-num">02</span>
+      <span class="js-phase">Step Two</span>
+      <div class="js-title">Curated Property Preview</div>
+      <p class="js-desc">We don't send you a link to Zillow. We curate a targeted selection of on-market and off-market properties matched precisely to your criteria — and arrange private showings on your schedule.</p>
+      <ul class="js-bullets">
+        <li>Custom MLS search with luxury filters</li>
+        <li>Off-market &amp; pre-market property access</li>
+        <li>Private showing coordination — on your schedule</li>
+        <li>Builder and new construction pipeline access</li>
+      </ul>
+    </div>
+    <div class="journey-step fade-up">
+      <span class="js-num">03</span>
+      <span class="js-phase">Step Three</span>
+      <div class="js-title">Market Analysis &amp; Offer Strategy</div>
+      <p class="js-desc">Once you find the right property, we arm you with everything needed to make a winning offer — at the right price, with the right terms, structured to protect you from first signature to close.</p>
+      <ul class="js-bullets">
+        <li>Full comparable sales analysis on the target property</li>
+        <li>Seller motivation &amp; days-on-market assessment</li>
+        <li>Offer price and contingency strategy</li>
+        <li>Escalation clause and multiple-offer preparation</li>
+      </ul>
+    </div>
+    <div class="journey-step fade-up">
+      <span class="js-num">04</span>
+      <span class="js-phase">Step Four</span>
+      <div class="js-title">Negotiation &amp; Under Contract</div>
+      <p class="js-desc">We negotiate fiercely on your behalf — not just on price, but on inspection terms, closing timeline, seller credits, and every condition that affects your outcome.</p>
+      <ul class="js-bullets">
+        <li>Expert offer negotiation — price and terms</li>
+        <li>Inspection navigation and repair negotiation</li>
+        <li>Appraisal gap strategy if needed</li>
+        <li>Attorney and title coordination</li>
+      </ul>
+    </div>
+    <div class="journey-step fade-up">
+      <span class="js-num">05</span>
+      <span class="js-phase">Step Five</span>
+      <div class="js-title">Transaction to Closing</div>
+      <p class="js-desc">Our dedicated closing coordinator Tracy Pavao manages every deadline, document, and detail under contract — so you can focus on your next chapter while we ensure nothing falls through.</p>
+      <ul class="js-bullets">
+        <li>Dedicated closing coordinator from contract to close</li>
+        <li>Lender, attorney, and title company liaison</li>
+        <li>Final walkthrough preparation and coordination</li>
+        <li>Keys in hand — on time, every time</li>
+      </ul>
+    </div>
+    <div class="journey-step fade-up">
+      <span class="js-num">06</span>
+      <span class="js-phase">Beyond the Close</span>
+      <div class="js-title">Post-Close &amp; Ongoing Support</div>
+      <p class="js-desc">Our relationship doesn't end at the closing table. We remain your resource for contractor referrals, market updates, investment analysis, and any real estate need that follows.</p>
+      <ul class="js-bullets">
+        <li>Preferred contractor &amp; vendor access</li>
+        <li>Quarterly market updates for your area</li>
+        <li>Homebot property value monitoring</li>
+        <li>Lifelong real estate advisor relationship</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ MARKET AREAS ═══ -->
+<section class="areas" id="areas">
+  <div class="areas-header fade-up">
+    <div>
+      <div class="eyebrow"><span class="line"></span><span>Our Markets</span></div>
+      <h2 class="section-title">Where We Work.<br>Where We <em>Excel.</em></h2>
+    </div>
+    <p class="section-body">From coastal Rhode Island estates to southeastern Massachusetts waterfront and historic communities, our market expertise runs deep — neighborhood by neighborhood.</p>
+  </div>
+
+  <div class="areas-grid">
+    <div class="area-card fade-up" onclick="window.open(\'https://ssteele.pontegroupne.com/property-search/results/?searchtype=2&searchid=1281413&city=Westport\',\'_blank\')" style="cursor:none">
+      <span class="area-state">Massachusetts</span>
+      <div class="area-name">Westport</div>
+      <div class="area-type">Coastal Estate &amp; Agricultural Reserve</div>
+      <p class="area-desc">One of southeastern MA's most sought-after communities — featuring sprawling coastal estates, horse farms, and private beachfront properties on Horseneck Beach and the Westport River.</p>
+      <div class="area-stats">
+        <div class="area-stat"><div class="area-stat-n">$1.8M</div><div class="area-stat-l">Avg Luxury Price</div></div>
+        <div class="area-stat"><div class="area-stat-n">38</div><div class="area-stat-l">Avg DOM</div></div>
+      </div>
+    </div>
+    <div class="area-card fade-up" onclick="window.open(\'https://ssteele.pontegroupne.com/property-search/results/?searchtype=2&searchid=1281413&city=Dartmouth\',\'_blank\')" style="cursor:none">
+      <span class="area-state">Massachusetts</span>
+      <div class="area-name">Dartmouth</div>
+      <div class="area-type">Waterfront &amp; Equestrian Estates</div>
+      <p class="area-desc">A coveted blend of coastal waterfront living and New England estate character — from North Dartmouth's equestrian properties to South Dartmouth's celebrated Padanaram Village.</p>
+      <div class="area-stats">
+        <div class="area-stat"><div class="area-stat-n">$1.5M</div><div class="area-stat-l">Avg Luxury Price</div></div>
+        <div class="area-stat"><div class="area-stat-n">29</div><div class="area-stat-l">Avg DOM</div></div>
+      </div>
+    </div>
+    <div class="area-card fade-up" onclick="window.open(\'https://ssteele.pontegroupne.com/property-search/results/?searchtype=2&searchid=1281413&city=Fall+River\',\'_blank\')" style="cursor:none">
+      <span class="area-state">Massachusetts</span>
+      <div class="area-name">Fall River</div>
+      <div class="area-type">Historic &amp; Urban Luxury</div>
+      <p class="area-desc">A city experiencing a remarkable luxury renaissance — from grand historic Highlands estates to new high-end developments with sweeping views of Mount Hope Bay and the Taunton River.</p>
+      <div class="area-stats">
+        <div class="area-stat"><div class="area-stat-n">$1.1M</div><div class="area-stat-l">Avg Luxury Price</div></div>
+        <div class="area-stat"><div class="area-stat-n">24</div><div class="area-stat-l">Avg DOM</div></div>
+      </div>
+    </div>
+    <div class="area-card fade-up" onclick="window.open(\'https://ssteele.pontegroupne.com/property-search/results/?searchtype=2&searchid=1281413&city=Bristol\',\'_blank\')" style="cursor:none">
+      <span class="area-state">Rhode Island</span>
+      <div class="area-name">Bristol</div>
+      <div class="area-type">Historic Waterfront &amp; Colonial Estates</div>
+      <p class="area-desc">Bristol's storied waterfront and colonial architecture create one of New England's most distinctive luxury markets — from Federal Street mansions to private harbor-front properties.</p>
+      <div class="area-stats">
+        <div class="area-stat"><div class="area-stat-n">$1.6M</div><div class="area-stat-l">Avg Luxury Price</div></div>
+        <div class="area-stat"><div class="area-stat-n">31</div><div class="area-stat-l">Avg DOM</div></div>
+      </div>
+    </div>
+    <div class="area-card fade-up" onclick="window.open(\'https://ssteele.pontegroupne.com/property-search/results/?searchtype=2&searchid=1281413&city=Tiverton\',\'_blank\')" style="cursor:none" onclick="window.open(\'https://ssteele.pontegroupne.com/property-search/results/?searchtype=2&searchid=1281413&city=Portsmouth\',\'_blank\')" style="cursor:none">
+      <span class="area-state">Rhode Island</span>
+      <div class="area-name">Portsmouth &amp; Tiverton</div>
+      <div class="area-type">Island Living &amp; Bay Estates</div>
+      <p class="area-desc">Aquidneck Island's quieter north end meets Sakonnet River waterfront in Tiverton — a combination of equestrian estates, waterfront retreats, and private bay-view properties.</p>
+      <div class="area-stats">
+        <div class="area-stat"><div class="area-stat-n">$1.4M</div><div class="area-stat-l">Avg Luxury Price</div></div>
+        <div class="area-stat"><div class="area-stat-n">33</div><div class="area-stat-l">Avg DOM</div></div>
+      </div>
+    </div>
+    <div class="area-card fade-up">
+      <span class="area-state">Regional</span>
+      <div class="area-name">Relocation Markets</div>
+      <div class="area-type">Boston South Shore · Cape Cod · Providence</div>
+      <p class="area-desc">Relocating to southeastern New England? We serve buyers moving from metro Boston, New York, and beyond — with deep regional knowledge and a concierge relocation program designed for seamless transitions.</p>
+      <div class="area-stats">
+        <div class="area-stat"><div class="area-stat-n">All</div><div class="area-stat-l">Price Points</div></div>
+        <div class="area-stat"><div class="area-stat-n">Full</div><div class="area-stat-l">Relo Services</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ OFF-MARKET ACCESS ═══ -->
+<section class="access" id="access">
+  <div class="fade-up">
+    <div class="eyebrow"><span class="line"></span><span>Private Access</span></div>
+    <h2 class="section-title">The Properties<br>You Won't Find <em>Online</em></h2>
+    <p class="section-body" style="max-width:500px">Some of the most extraordinary homes in our market never reach Zillow, Realtor.com, or the public MLS. They sell quietly — through relationships, network, and trust.</p>
+  </div>
+
+  <div class="access-layout">
+    <div class="access-graphic fade-left">
+      <div class="ring ring-1"><div class="ring-dot"></div></div>
+      <div class="ring ring-2"><div class="ring-dot"></div></div>
+      <div class="ring ring-3"><div class="ring-dot"></div></div>
+      <div class="ring ring-4"><div class="ring-dot"></div></div>
+      <div class="ring-center">ACCESS</div>
+    </div>
+
+    <div class="access-features fade-right">
+      <div class="access-feat">
+        <div class="af-icon">◈</div>
+        <div>
+          <div class="af-title">Private Seller Network</div>
+          <p class="af-desc">Homeowners who prefer a quiet, off-market sale contact our team directly. As a registered buyer in our network, you receive first access to these confidential listings before anyone else.</p>
+        </div>
+      </div>
+      <div class="access-feat">
+        <div class="af-icon">◇</div>
+        <div>
+          <div class="af-title">Estate &amp; Probate Pipeline</div>
+          <p class="af-desc">Our specialization in estate and probate transactions surfaces luxury properties that enter the market through family transitions — often before any public listing exists.</p>
+        </div>
+      </div>
+      <div class="access-feat">
+        <div class="af-icon">△</div>
+        <div>
+          <div class="af-title">Builder &amp; Developer Relationships</div>
+          <p class="af-desc">Pre-construction and early-phase access to luxury new developments in SE Massachusetts and Rhode Island — including pricing and lot selection before public release.</p>
+        </div>
+      </div>
+      <div class="access-feat">
+        <div class="af-icon">○</div>
+        <div>
+          <div class="af-title">Agent-to-Agent Network</div>
+          <p class="af-desc">Our relationships with top producing agents across 50+ regional offices means we often know about a listing days before it goes live — giving you a critical head start in fast-moving situations.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ OFF-MARKET PROMPT ═══ -->
+<div class="off-market">
+  <div class="om-inner">
+    <div class="fade-left">
+      <div class="om-label">Off-Market Program</div>
+      <h2 class="om-title">Register for Private<br><em>Listing Access</em></h2>
+      <p class="om-desc">Join our confidential buyer registry and receive first notification when off-market and pre-market luxury properties become available in your preferred communities. No public search required.</p>
+    </div>
+    <div class="om-right fade-right">
+      <a href="#consult" class="btn-primary">Join the Private Registry</a>
+      <a href="#" onclick="event.preventDefault();const el=document.getElementById('areas');if(el)el.scrollIntoView({behavior:'smooth'})" class="arrow-link" style="justify-content:flex-end">View Market Areas</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ FEATURED LISTINGS ═══ -->
+<section class="featured" id="listings">
+  <div class="feat-header fade-up">
+    <div>
+      <div class="eyebrow"><span class="line"></span><span>Current Opportunities</span></div>
+      <h2 class="section-title">Featured Luxury<br><em>Properties</em></h2>
+    </div>
+    <p class="section-body">A curated selection of the finest active listings in our markets. Contact us for private showings, additional details, or access to off-market opportunities not shown here.</p>
+  </div>
+
+  <div class="feat-grid fade-up">
+    <div class="feat-main">
+      <div class="feat-main-bg"></div>
+      <div class="feat-main-info">
+        <span class="feat-tag">Just Listed</span>
+        <div class="feat-price">$2,850,000</div>
+        <div class="feat-address">14 Harbour Point Estate</div>
+        <div class="feat-location">Westport, Massachusetts</div>
+        <div class="feat-specs">
+          <div class="feat-spec"><strong>5</strong>Bedrooms</div>
+          <div class="feat-spec"><strong>5.5</strong>Bathrooms</div>
+          <div class="feat-spec"><strong>5,640</strong>Sq Ft</div>
+          <div class="feat-spec"><strong>3.2</strong>Acres</div>
+        </div>
+      </div>
+    </div>
+    <div class="feat-side">
+      <div class="feat-small">
+        <div class="feat-small-price">$1,975,000</div>
+        <div class="feat-small-addr">8 Bay View Terrace</div>
+        <div class="feat-small-loc">Bristol, Rhode Island</div>
+        <div class="feat-small-specs">
+          <div class="feat-small-spec"><strong>4</strong>Beds</div>
+          <div class="feat-small-spec"><strong>3.5</strong>Baths</div>
+          <div class="feat-small-spec"><strong>4,100</strong>Sq Ft</div>
+        </div>
+      </div>
+      <div class="feat-small">
+        <div class="feat-small-price">$1,625,000</div>
+        <div class="feat-small-addr">22 Padanaram Road</div>
+        <div class="feat-small-loc">South Dartmouth, MA</div>
+        <div class="feat-small-specs">
+          <div class="feat-small-spec"><strong>4</strong>Beds</div>
+          <div class="feat-small-spec"><strong>3</strong>Baths</div>
+          <div class="feat-small-spec"><strong>3,450</strong>Sq Ft</div>
+        </div>
+      </div>
+      <div class="feat-small">
+        <div class="feat-small-price">$1,350,000</div>
+        <div class="feat-small-addr">91 Highland Estates Drive</div>
+        <div class="feat-small-loc">Fall River, Massachusetts</div>
+        <div class="feat-small-specs">
+          <div class="feat-small-spec"><strong>4</strong>Beds</div>
+          <div class="feat-small-spec"><strong>3</strong>Baths</div>
+          <div class="feat-small-spec"><strong>3,100</strong>Sq Ft</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ BUYER TEAM ═══ -->
+<section class="buyer-team" id="team">
+  <div class="fade-up">
+    <div class="eyebrow"><span class="line"></span><span>Your Buyer Advisors</span></div>
+    <h2 class="section-title">Direct Access to<br><em>Senior Leadership</em></h2>
+    <p class="section-body" style="max-width:520px">When you work with The Ponte Group Luxury Division as a buyer, you have direct access to our principals — not a buyer's agent assistant. Senior expertise, every showing, every negotiation.</p>
+  </div>
+  <div class="bt-grid">
+    <div class="bt-card fade-up">
+      <div class="bt-photo"><img onclick="window.location.href='ponte-luxury-agent-cliff.html'" style="cursor:pointer" src="data:image/webp;base64,UklGRo4WAABXRUJQVlA4IIIWAAAQjgCdASpAAZABPmEwlUckIyIjJjQo8IAMCWdu27DfFTyeK6yHulvoEziaHk1img1Ip8gzhbTMzfusI64AnVEXsICVDo31p2Yya+4ft2VDIQEpEBsf+DT9Jd/9CFsWFSkcqz3hQJU3d/TiQ7KhkIAdPu5jXUM1ehZso5rn2R9wkx+5hskCRhgElx8q4P27KhkHb45Np/GlMmsB48yC+P4XT6WHg2RPoteW2zXZUMhARo/qFkTE8MCOTGuIdcMD/gK09QpHGXAQIfWp7eN3UnUpx4GRTnsdoEGNL5jhASobqHbnAM9Augxh4AjEFbCxqRExbaasRBnur8YmBXpMLnG7IpqvBMRUe1lJf4QXI5whL0g01jNP6U12VDIQASd2mq4bwDqtzRJ7uTHON8n0rVvZ4UnH6fmdaHQEW7f8ympDaRxHRyoGqGQgJURY78sIbcF7d3qFL3zjhG8/AMgHac4aLY7aF/rMrafTjnENwY0svDPmOe4d0WLpUOplQj0gllSIlZtPGF5Nu85MlaVJAI3CWNDjyzJbz8WyTqJchQNsiOkeplQyEAGI4a4D7hh2KcXuB8FQB5VLnr1hnnbFvHa4kSjeeSOAJm3o1ulQ6mSYTTifOaf4ZcGWfLAOkFjSq17qTy59+eW938pf7/h4FqbsqGKXQf8filV3qxpXJZ322XgD+7DJ5Wgt0pYf24aAgcCOWJ47cSmcNPMXK7zPOsE2QiS7IK65HwbRQisOg10sLiStt0zLYCRGBaJzTH7leHRuTbk66dBbtQbPMqILrd4/ZrJF39DFIrqkVnVG5dfwAhsAKlSI0jOxI05B3+OIGqy+h/hUY4/SAjiNXqiowDX7DBjYfO2gOPFJCrT9omI+OBGhbZqnJWZfkeH2ZzoBLqX5jNWAo00DPFKuqdTMzPVLtOxoVL2DVEH0gtPUMHMJ5S2X0ZypsNYRlmOkqTpLW5UqH4qt4qsuxWLLdGJEdnvUvPMZp7yI4mSTXWcQPVPwiOsv+LzzVe2xLZtWHsOW4ToyZdfniWmEKynf0opWAMddXhKn2/5WP88eX4XSuU4LWMcqWYzpgDsb80XgT8+hznYVNuU4V44iZEBCdAfyiVTV6+DPrUs6JMjrJPlEkYzdZVgO7qnrzfMy5EPnx5eMklTfj4SKMwFC/s0bE8mGqnuVTwTblfersmuznMu/C5J52yN8RhXCsZti4VE7glGmu7bzcPWS2HrkmNhgMgqvyZRlNStP1MpW6qjv43kgDRWr+MLjSuXkZbKNV3yIwskDb6x1TQjPwPvUfL67WIpB5GRG4aLcQpeKpn9egf65Jq5wt+LgT+FW5FUlM7z1QEoSSLRY5mQ2NKC4Q+CN9QIX/m8tqpYOS7IZxFx33PMw1FIDsniBneelIBJoTGWtDqdsOV3BdOSwb1doNYfEgafDBDaK4kk3S/+WEKBSL/fc3sBvMSnvvS8Buk36MlAsceYhj60DF9uEd0F0O9/s5/h5Dli9If1sWTOF0U563J6iBgNeXwiSnyM7ABlqAAD+9r6AGd2+tR/UGkO0c9p5zZ8yvhSNCgoQa9w8pms90ZXBOoHUYixcVAAABZFYA7UNIJa7FtXFCwnbpIl1biZn4vMIHfewoHt8jqARgg+4VA3WysZmT1P1uouwEAZXzWNA/HOO29nr4135SWyIeogtNR+Qqb6YhuSX9vg4N7/i6rPbt0k6IOSaYLT5ccSqquw9KsLG5lZcFqqUf6j8giTXQsjUnOqXqSdmitt/EfPH+PJnJikoKrQpp58UIVdB+HR5wn8FIAAALS6LRR9MvhCno4RF3gbPY8pvmwJHFi/1PDw1RptJZoaFcrSVXcEkJLRMGy+a3Gd2qy2wOUkguXdy4l44Z5zfIJ5B1RkcOGIUJjSN55ygRi+n65mNN6F4L0polVgenH54mBPy7Pl+YjECJeMCOZ5apzg6lwe7Grl8wAAFBAxsfJNU3g9V3UtEOkSpyLMBEIkGa5QpuojuGN/6FB+EtDgkmomMULS5XjjxTycq+vcyentxD4dp8szCyoeXA4FU8h6AAAEjuQDhm30HAw9qeRrYolT1q4XVnq1Oe0eVeYAt7sU8Rx4EcxEbUg8rNusIrJ213DIc4xfLNEuV0jKz7jZQAlL8Uc5lUQTOD3hO9J3VXh+zpsFMHk4Y9pGK1vUWvyXWqF9HbOY9Gzsa/AjbgTXoiK63YyvrbyYq3FahU2DIEnapuK8p4/3Dg9n1OpTDlWUlJqjvaXjxLbaNDd3hYpCx3cEjXBVtYACoWZADCc8Vi7dLtpJAnkZqnZxO1otVTZM5Au/W5+qhzWVsYiMiYEA+XuPw47aIsHHqGVxBFUlGD4Y/mxsXng/9exeFWtDKcoGJfOICUoicI1cuD32a1PByOMUGudjP1g5tWoHo1uNeefwc/Y2uZUFB7dNrAuxO+tS5geUMLsnuJgjVUyTobf4Xv0uEGbI1e8G0JCDoknRX6rhMWly/zNeFhOnX+HPSSosJwqgYaIHLnD2CoEOsgcWctpkgmm2jAYEIFhWDmOKY6VWhfAe2GUspSjOgOsi889ykBEe4jaxT2l1LY4JBc0F+oGOI2zKHVtD1PczTUVtcAmy3hssSLaqNGo497cd7irOAoSiD7uZjDTexZAAwgnMrq3Lxkcy3ZEuG5QabVDnocnfUHIcVITTPqnK1qO8FIABSDpd3pjzV0U8zGneDqFiJioCk77FqMXiJWNckW/DcOEzz+PL0FmK7mbBHoAaGsfdv1GeiMNPJWU9AzohNiGDOlon3AE7E4O38QXykOLIaTZwq/Byl4Q+6WY94z2H65jynlmOjPsKqpEbhT7A5Brrx4HcZ1QeR/4wmIayz2ZCI2O68EREAl4UKiv6RHI1DeFmE+gW8UoL37f/GzEZ3ym8K8iHcDQYZRUdyeESTnv6v5S1emyAAKvsqtAa0FkirTHM1BFN7r/T2wdfWV9Xx6pzvMFvN/rtyrUgjWY7Ywx3dWDhhzOxOiLFjfNGLBkpBbKd1I7e8i6/49pfmSj0gtrjJv6mdB8yBYbLvqTk07ba2j3i1aLOJ+RZvNzHE+teaoW0SI5VTVByJt0RRuz5OQEaWSLS1YyzTtcQ81pSZ7VTQ0frRSY9wgCsVbTYBaPk4UTk0vKWA2YAK5zRr9W9zkDZlRToSNEKWSUal4Imz2a80hFfqXgT5+XOdkUsgKW4p/uTO0Vi+pTeEzEUdH7UOtHFPw1HQl+rytLHxgAAABvdG1aN0KK/ITKLV1Gf/R8vZpiBxs0zaReTLlt05y0mHB9Nh5ddeVZSJreM2D0CmtbwN2/7c8W6js3xtxt4IVY4VPcn5kOJKCp6KlmkHijrO3Wwo7KXKYeIOflz9pFF7tTxFaJDUdb8NQFw4uIXYrwckdmf9c4SwSFAHKONaoNwRLqA4SjAIG/S4//CTGWe+Eu2wilqu8lQTcHOIgg3fVAA3CMBm84NkZM7fai/r/EuDETQwbQZ1cjFjLE1YRLC/NDp1hX19qgAAARZV1VCrqeOX+CN5tN2eew1CJMhLJPHbF713LZKHE2seWwa3qlEe5hmoORMFzKQASbfWN9aaSQ6pUO4AQNfndlyeqLuZDDR4U5OaTWs92WYS5jaNtRvAg7H2a5GsWT+aIWhzN6glMgVZJLpalv16wsiErGSuB9i35GAxey7fxuWoPxc18wCavWIOfDdOr02fsrcYIVx9h0HS/CltIbdYqmJW1TvWFpTdX3AAAXNW8qO996/O1gEN0tseVVyMaXfbzLtCvWfAVo7aPd4dO+PK/2YQU57dhwr3XfKZoXC7ilMgr3lpYljCtYd+ssuFZoTWMiaq0/l5/qjYpHVs2ZJ/Y1ULw0Tnm+2Bqy7c8DzV9u0Z/yXxQRjuHD0GLU4ASMssRKFS5pfEVRxfOmjqglcar7lqq+EcDmVNKkR3aS64bc2hmTJ4iLA14ZkXWiwdxWZ/Wo5cS7hsBP8AAIAEQm+K/MF/FILA0Vr9WyBl+7eAzXs89aac7qLN/LwwpQ6dnYBPxFrVrVs4QtAx7Xb4Vk9wGnVXFreHNJA63jljEOYRmkXlzhaiFpaybdWnfMncQ70/G1qODYxmuqKS/NoXjYR2ntAm9RJ0gaqQ1nkReHU7rZ3Y3JYCJoSWAy9ix3Y1HDZ8eXx5O4tEzF3QyX+vwwyVWcVpD0Msb+Z8aO5+crNkYRMvFUU1wsBq9ySGXpnd56Cor7lGKX/fHw+/Ia8o+o25K5j0DFmtrzuFLUY3UgJgMZkdWBCEQOhLg1J9uEwIP/FuyREd4YmWpAViLBXza28s2Q+N1yvSUhiUNC4BkEQT8d7BV3c+aAuGObIZTZlp2JQEWWflJd0TNOFHt3Xr7HBOJhgRzWhqrxFyjfzbB/VB+ISpRH1t8Xsmu03TXVmylkfBmccoHZMGUB1u7kPoZzaVrp/xNsCoXICFfMXtwgHboTFbObnRb3nxWO9HiNSuuKk2asYebjbRnvgrX+PxMznzL877QHQB/oAMrD3ZG4vYfDJw3wjWxXK2gAPwMR24dqTQn+Ix+pUEtZTn5k76PqsfX0cCgeQEIGAdPIWZO7MFF2k5huVEHSKtaJUrOwWhFXm48U9zPT4E3xKJv8EcK8+9sIzgzW0+00J3m02rR2AyE7hZFCYFfwb46B2heW9WxHV9cZKnMtBKhl24QznufzJKiNEQRekIQN84j2xOFDr3AH+QxOlBz0oLygrfMuqeL+wFDz5c9JgqpuOTxHqnRB7L0b54W42dM58H0c8kFcsFGEB/dkS8JRYYCzqvihSfcDGQ2VNkJkaVbgKrbZO5YoTfvY6Gix2mtKGOPAVukWWLlPJnjF2GaIKDC1Glf32V/QgpfBp6ngPYg3lror/8UiosSoumhKzZYems+Y0n9wZyVehT8cLW8qx3CF0Ps2lLPZdSUDvRUJ5viOTRNbrdCeZFFOAtfq9SQSWan6Eu1TEmESj8fwVLidDq9WHz+Bk9wzIgvGPkvH2nrYdiMQmI5KjqtziFwFRZj+lOeHDZVD8VEs1DdN8UBMYm4aQ/ibwFTZHuxN8uYHJR6AreoHgVNygOZZsvKprzs4QbOarRdu8CCmxDfAeFIBDAxlfhlvzxgQjlR4olrvXerH3OzSmWv4bWOLz2XF8JQisjiEF3+fuE/Ek9KHz3RfoRjNph89KyRJwVbMR9ah9DCETu0oB95AIWqS/PUNX81hIFnfyyuAhw53Rj4DoinSwLOazUlz76JLROO7BFO9t4rlZ9B+fytr7MFnp1ARGtD7epeFao1rd+nt35QbEzQjDqfl//U0NZqhV6ocDVBHf3V8XsRb1xn+HJ/HDx2Mne0EMRH9Mn4I77EjpgMlljLl28IZWdvB7ALq31zMFQ6iD5bYw6daLjksFtZ5ZlBy/y5EOZAWSfat/CXdkISew1jkmoJeD/AgGVy7pzFF3wqUZLptujsy+hLpQBEZ+GYSBOa/ryUMTfFuprApor4vhM1InCQ6oAS4L1gFSEBPu5OnOXxej8y/y5dDDyFqClqjNB2RnqaUKCX67t+t8X4w7f/kvrLnzke93Mpu6nT0YnEjgZDB9RFMil80i7/ecDQAgLBG7gTil6l1/yktTcgV23n9ROCW0xH4CE43Odys4Awkx7Fhl7ZFt5/Jhs5VhN5XoWMqzBEXXLg+qjT4lYLE+R54M9I93zusZjVoWYqA/EUbiEorp3DvvTShOvucyOK9fiXuoDf+Ak6OVtOE3IuT+SOr6eq89x+h969f3ff8dFuWbiwXKpc22bPpnDoBmPWgxPbSQJ0ODhAbKGvv11tsyT9XowG1XC0/wiu5RMu592Is1WLb+PPn8BgCLU2xfZRhuGLtCYhcuzWhEIowxiztUgzlD4Ob2cm+Y3JnoLjKR/UqrGS8ji69bRVb4+JsftGZpBKiQ9BXYjw/XwhwL/uVZdLVWKc+7YGtMrOob9qMOhnLTJa6tB1NnqqqXo1tYpDLRETan8tT1d71nr6ljyl5ExMaMXADEla5/2QR+efhO6oGdPrrLS777jGyefWZY/csClZlk6Opjw5Vznpsgltn+VLEAXhPRiU5j/8AuG68WaL6g9cSOfeW3gU0PjrCFoQVgzMNkpTAUZwRwl4lNvsl5uyy2QThIELuShwT0Bgx+ye8NfiVBChHsrVl4inCwUJhkDz2zGZjvMRhbzTIvAE+ZwKMHMNZDhgt6RrNEvcs8/PCnemm4WornCVjaYNJwGNAS+BxKkk3xHMYQpLLWgJUvI6BPoahuQLZCPpHLjiqRXKKWCg248U0lwlASbiQc8HEqIRLuRgRsasn8OL9KyAxFnAyLddHqMFmPVEjjoxHaYYQOUSSmNCJjwz3nU35nvuVHEogMNS54MRrRn6uW8/FLoiZA4DTK3jB6TclExaMiqHcfDgO2cLW5r4G6SeB0kcnyrEfuVsI5aBkkY8xhbjznjKAV6CjDblAYyvUOOZlXJDO7U9g41VqQTQPElzX4Ij0cYkY/erohofqF3A0/RPR9u6yMklsj4bi8B+8NflFyIidz6pFn1pIvqLYHv0ls5anSNYRHteKgnFQw4CXmOhBBY61Pw+AK4hfhXmMgRFYRh3xa4j9M6NtrSNIYUGyZKKDvPcGNIZYAYHwmMfINSD3SCIsOzZlcorcVVpvhBbIE1SelnDLbt7b3HR/X3/KR2SaMbKJ9GIKHxQWoWp/Y9l6kL86L/5nzffLXXWutTudFjWS3RU1bE7pq5q5OxHGKNXE1Nldt/Zf8/Ma4XYLO+9sfIy0MAG8H6VGtNl1jyFLahLsI+TA71qTuv81YQB+uoE0h895Fe4uyqUGfVuM7bWsIZWbwFL+uTcMrK7yRXIxyEO0xq69+eYisUVBLC0C+X/Vpmiiypq+u7xU9VLMcZW1EZro4AFQBi+CGzy3RF7ewAOzFOxUQB6/3zFYjJUhvpq/mQGaBR+jUam0tXPgJt7i3SmCGphGP3nziZr6V4g0Nnt0eUh0otIPd4ufbnksRBbrqMAVPc+UgIZBWSltH4PqCs1B6DXZXgb8b9GeCeVcOpzd0YlWYwAWjJ+ekt01uydDbHkIKuf+07jrpj2GaM6PKN1eR98ZR1X2V5Or0yRPGYW2W6K/ciNPmYvdlZq1m1V/2P0Ly0Am9TU4dkCeV7KufvAd+7uWoMyo+rz+SSkLAemGLNdYdNyccQbuVYkOPs9/WKNXcKU2DgwaHqSzPGhWMNS9By20quP2IQSCW/gyjUbFDfa3giOs9WObtWgOGQnoy31V/hMBx41ikgj12c9O4abdJuHrF8iNdbojsTxUIpZxxkQJmzjgKxHiVH7LNX3Lvosm8+k/YD0VFCpcN5dlZUAHr50/jVcYveALtFeqRRXe2JFyQeeRbiJpoZIjWX3uVNsc1Pr9QeCQRClTtWsihGnaDFVhMq0fH6CUxhatLf4XVmcVNXbuhSN7rKoYPO8h0GM+mzqsa93KHXlHjVO1YlF7W239cOEsRe9KaMquUhygGBiRMxrGTWw1pFMSL8m47wygStXOE5tl0H0djfWD5chGSoFFUNu7FygwfpBZxOsOTE5sw2xeOr75oqcZmwejJKixa+pMoa9qf1pyiYtlh97AOSGzZJ4WkixpJvNmvrZUDjTfs6O3ZDjvxjITNls+sN1gmEjCdhqJaMNY4HiQYoaycsmitoB9weX6x39N2WmZzthIcS9mAAAA==" alt="Cliff Ponte"></div>
+      <div class="bt-info">
+        <span class="bt-role">Broker · Owner · Founder</span>
+        <div class="bt-name">Cliff Ponte</div>
+        <div class="bt-title">Broker-Owner · The Ponte Group at KW South Watuppa</div>
+        <p class="bt-bio">Cliff's unmatched brokerage relationships and nearly two decades of southeastern Massachusetts market intelligence give buyers a level of access and insight that no other team in the region can match.</p>
+        <a href="#" class="bt-link">Connect with Cliff →</a>
+      </div>
+    </div>
+    <div class="bt-card lead fade-up">
+      <div class="bt-photo"><img onclick="window.location.href='ponte-luxury-agent-scott.html'" style="cursor:pointer" src="data:image/webp;base64,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" alt="Scott Steele"></div>
+      <div class="bt-info">
+        <span class="bt-role">CEO · Operating Principal</span>
+        <div class="bt-name">Scott Steele</div>
+        <div class="bt-title">Senior Luxury Agent · KW Luxury International Certified</div>
+        <p class="bt-bio">Scott's negotiation discipline and data-driven buyer strategy have consistently delivered outcomes that exceed expectations — whether securing a trophy property in a competitive market or uncovering a hidden off-market opportunity.</p>
+        <a href="#" class="bt-link">Connect with Scott →</a>
+      </div>
+    </div>
+    <div class="bt-card fade-up">
+      <div class="bt-photo"><img onclick="window.location.href='ponte-luxury-agent-alexis.html'" style="cursor:pointer" src="data:image/webp;base64,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" alt="Alexis Anselmo"></div>
+      <div class="bt-info">
+        <span class="bt-role">Team Leader · Lead Luxury Agent</span>
+        <div class="bt-name">Alexis Anselmo</div>
+        <div class="bt-title">Luxury Division Team Leader · KW Luxury Certified</div>
+        <p class="bt-bio">Alexis brings a client-first philosophy and extraordinary attention to detail to every buyer relationship. Her ability to understand what clients truly want — and find it — makes her one of the region's most trusted luxury buyer advisors.</p>
+        <a href="#" class="bt-link">Connect with Alexis →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="testimonials">
+  <div class="fade-up">
+    <div class="eyebrow"><span class="line"></span><span>Buyer Experiences</span></div>
+    <h2 class="section-title">From Our Buyers,<br><em>In Their Words</em></h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card fade-up">
+      <span class="stars">★★★★★</span>
+      <span class="testi-qm">"</span>
+      <p class="testi-text">Alexis found us our dream home before it ever hit the market. We were living in Boston and had no idea what was available in Bristol — her network and patience made all the difference. We couldn't be happier.</p>
+      <div class="testi-author">
+        <span class="testi-line"></span>
+        <div>
+          <div class="testi-name">K. &amp; P. Andrade</div>
+          <div class="testi-result">Purchased $1.82M · Bristol, RI</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card fade-up">
+      <span class="stars">★★★★★</span>
+      <span class="testi-qm">"</span>
+      <p class="testi-text">Scott's negotiation saved us $85,000 on a property we thought was going to be a bidding war. His read on the seller's position was exactly right, and we closed on the best terms we could have hoped for. Truly exceptional.</p>
+      <div class="testi-author">
+        <span class="testi-line"></span>
+        <div>
+          <div class="testi-name">M. &amp; S. DaSilva</div>
+          <div class="testi-result">Purchased $2.1M · Westport, MA</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card fade-up">
+      <span class="stars">★★★★★</span>
+      <span class="testi-qm">"</span>
+      <p class="testi-text">We relocated from Connecticut and knew nothing about the SE Massachusetts market. Cliff and Scott walked us through every neighborhood, every comparable sale, and made us feel like we'd lived here for years before we ever made an offer. Worth every second.</p>
+      <div class="testi-author">
+        <span class="testi-line"></span>
+        <div>
+          <div class="testi-name">D. &amp; L. Correia</div>
+          <div class="testi-result">Purchased $1.58M · Dartmouth, MA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ CONSULTATION CTA ═══ -->
+<section class="consult-cta" id="consult">
+  <div class="consult-inner">
+    <div class="ci-left">
+      <div class="eyebrow" style="margin-bottom:28px"><span class="line"></span><span>Begin Your Search</span></div>
+      <h2 class="ci-title">Let's Find<br>Your <em>Perfect</em><br>Property.</h2>
+      <p class="ci-desc">Tell us what you're looking for and a member of our luxury buyer team will be in touch to schedule your private consultation — no obligation, complete confidentiality.</p>
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;align-items:flex-start;gap:16px">
+          <span style="color:var(--champagne);font-size:16px;margin-top:2px">◈</span>
+          <div><div style="font-size:11px;letter-spacing:1px;color:var(--cream);margin-bottom:3px">Complimentary Buyer Consultation</div><div style="font-size:11px;color:var(--text-body);line-height:1.7">A full strategy session to understand your goals and map your path to the right property.</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:16px">
+          <span style="color:var(--champagne);font-size:16px;margin-top:2px">◈</span>
+          <div><div style="font-size:11px;letter-spacing:1px;color:var(--cream);margin-bottom:3px">Off-Market Property Access</div><div style="font-size:11px;color:var(--text-body);line-height:1.7">Immediate registration in our private buyer network for pre-market and off-market listings.</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:16px">
+          <span style="color:var(--champagne);font-size:16px;margin-top:2px">◈</span>
+          <div><div style="font-size:11px;letter-spacing:1px;color:var(--cream);margin-bottom:3px">Transparent Compensation</div><div style="font-size:11px;color:var(--text-body);line-height:1.7">Buyer agent compensation is discussed at your first consultation so there are no surprises — ever.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ci-right">
+      <div class="ci-form">
+        <div class="ci-form-title">Start Your Search</div>
+        <p class="ci-form-sub">Our buyer team will respond within one business day to schedule your private consultation.</p>
+        <div class="form-row">
+          <div class="form-field"><label>First Name</label><input type="text" placeholder="First name" name="first-name"></div>
+          <div class="form-field"><label>Last Name</label><input type="text" placeholder="Last name" name="last-name"></div>
+        </div>
+        <div class="form-field"><label>Email Address</label><input type="email" placeholder="your@email.com" name="youremailcom"></div>
+        <div class="form-field"><label>Phone Number</label><input type="tel" placeholder="(508) 813-9267" name="508-0000000"></div>
+        <div class="form-row">
+          <div class="form-field"><label>Budget Range</label>
+            <select name="buyers-select-2"><option value="">Select range</option><option>$1M – $1.5M</option><option>$1.5M – $2M</option><option>$2M – $3M</option><option>$3M – $5M</option><option>$5M+</option></select>
+          </div>
+          <div class="form-field"><label>Preferred Area</label>
+            <select name="buyers-select-3"><option value="">Select area</option><option>Westport, MA</option><option>Dartmouth, MA</option><option>Fall River, MA</option><option>Bristol, RI</option><option>Portsmouth / Tiverton, RI</option><option>Open to all areas</option></select>
+          </div>
+        </div>
+        <div class="form-field"><label>Tell Us What You're Looking For</label><textarea placeholder="Describe your ideal property — style, location, must-haves, timeline..." name="describe-your-ideal"></textarea></div>
+        <div class="form-field" style="flex-direction:row;align-items:center;gap:12px;margin-top:4px">
+          <input type="checkbox" id="offmarket" style="width:16px;height:16px;cursor:none;" name="buyers-field-1">
+          <label for="offmarket" style="font-size:10px;letter-spacing:1px;color:var(--text-body);text-transform:none;cursor:none;">Register me for off-market and pre-market property alerts</label>
+        </div>
+        <button class="form-submit" type="submit" onclick="submitBuyerForm(this)">Begin My Search</button>
+        <p class="form-disclaimer">By submitting this form you agree to be contacted by The Ponte Group Luxury Division. Your information is kept strictly confidential and will never be shared or sold.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand fade-up">
+      <div class="brand-name">The Ponte Group</div>
+      <span class="brand-sub">Luxury Division</span>
+      <p>Southeastern Massachusetts &amp; Rhode Island's premier luxury real estate team — built on expertise, anchored by integrity, and defined by results.</p>
+    </div>
+    <div class="footer-col fade-up"><h4>Services</h4><ul><li><a href="#">Luxury Buyers</a></li><li><a href="#">Luxury Sellers</a></li><li><a href="#">New Construction</a></li><li><a href="#">Investment &amp; Portfolio</a></li><li><a href="#">Estate &amp; Probate</a></li><li><a href="#">Relocation Services</a></li></ul></div>
+    <div class="footer-col fade-up"><h4>Resources</h4><ul><li><a href="#">Property Search</a></li><li><a href="#">Market Reports</a></li><li><a href="#">Luxury Insights</a></li><li><a href="#">Neighborhood Guides</a></li><li><a href="#">Home Valuation</a></li></ul></div>
+    <div class="footer-col fade-up"><h4>Company</h4><ul><li><a href="ponte-luxury-agent-scott.html">Meet the Team</a></li><li><a href="#">Preferred Partners</a></li><li><a href="ponte-luxury-join.html">Join Our Team</a></li><li><a href="ponte-luxury-contact.html">Contact Us</a></li><li><a href="ponte-luxury-privacy.html">Privacy Policy</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-legal">© 2026 The Ponte Group Luxury Division. All rights reserved. The Ponte Group at Keller Williams South Watuppa. Each Keller Williams office is independently owned and operated. Information deemed reliable but not guaranteed. All properties subject to prior sale, change, or withdrawal. Equal Housing Opportunity. Scott Steele and Alexis Anselmo are licensed real estate professionals in Massachusetts and Rhode Island. Not intended as a solicitation if your property is currently listed with another broker.</p>
+    <div class="footer-credit"><div>Powered by</div><div style="color:rgba(242,237,228,.3);margin-top:4px">Keller Williams Realty</div></div>
+  </div>
+</footer>
+
+<script>
+  const cursor=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+  document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px';});
+  document.querySelectorAll('a,button,input,select,textarea,.reason-card,.journey-step,.area-card,.feat-small,.access-feat').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cursor.style.width='16px';cursor.style.height='16px';ring.style.width='54px';ring.style.height='54px';});
+    el.addEventListener('mouseleave',()=>{cursor.style.width='10px';cursor.style.height='10px';ring.style.width='36px';ring.style.height='36px';});
+  });
+  const nav=document.getElementById('mainNav');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:.07,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach((el,i)=>{el.style.transitionDelay=(i%7*.06)+'s';obs.observe(el);});
+  document.querySelector('.form-submit').addEventListener('click',function(e){e.preventDefault();this.textContent="Submitted — We'll Be in Touch";this.style.background='#2a4a2a';this.style.color='#9cbc9c';this.style.letterSpacing='1.5px';});
+
+  
+  // ── MOBILE DRAWER ──
+  function openDrawer() {
+    document.getElementById('mobileDrawer').classList.add('open');
+    document.getElementById('drawerOverlay').classList.add('open');
+    document.getElementById('navToggle').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    document.getElementById('mobileDrawer').classList.remove('open');
+    document.getElementById('drawerOverlay').classList.remove('open');
+    document.getElementById('navToggle').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  // Close on Escape key
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+  // Mark active page in drawer
+  (function() {
+    const path = window.location.pathname.split('/').pop() || 'ponte-luxury-homepage.html';
+    document.querySelectorAll('.drawer-nav a').forEach(a => {
+      if (a.getAttribute('href') === path) a.classList.add('active-drawer');
+    });
+  })();
+
+
+// ── Universal Netlify + FUB form submission ──
+async function submitToFUB(formContainerSelector, formName, btnId, successId) {
+  const btn = document.getElementById(btnId);
+  if (btn) { btn.textContent = "Submitting..."; btn.style.opacity = ".7"; btn.disabled = true; }
+
+  const container = typeof formContainerSelector === "string"
+    ? document.querySelector(formContainerSelector)
+    : formContainerSelector;
+
+  const data = new FormData();
+  data.append("form-name", formName);
+
+  if (container) {
+    container.querySelectorAll("input[name], select[name], textarea[name]").forEach(el => {
+      if (el.type === "radio") {
+        if (el.checked) data.append(el.name, el.value);
+      } else {
+        data.append(el.name, el.value);
+      }
+    });
+  }
+
+  try {
+    // Submit to Netlify Forms
+    await fetch("/", { method: "POST", body: data });
+  } catch(e) { console.warn("Netlify Forms:", e); }
+
+  try {
+    // Forward to FUB via serverless function
+    const obj = {};
+    data.forEach((v,k) => obj[k] = v);
+    await fetch("/.netlify/functions/submit-lead", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(obj)
+    });
+  } catch(e) { console.warn("FUB forward:", e); }
+
+  // Show success
+  if (successId) {
+    const fc = typeof formContainerSelector === "string"
+      ? document.querySelector(formContainerSelector)
+      : formContainerSelector;
+    if (fc) fc.style.display = "none";
+    const s = document.getElementById(successId);
+    if (s) s.style.display = "flex";
+  } else if (btn) {
+    btn.textContent = "Submitted ✓";
+    btn.style.background = "#2a4a2a";
+    btn.style.color = "#9cbc9c";
+    btn.style.opacity = "1";
+  }
+}
+
+function submitBuyerForm(btn){
+  btn.textContent="Submitting...";btn.style.opacity=".7";btn.disabled=true;
+  const form=btn.closest("form");
+  if(form){const data=new FormData(form);fetch("/",{method:"POST",body:data}).catch(()=>{});try{const obj={};data.forEach((v,k)=>obj[k]=v);fetch("/.netlify/functions/submit-lead",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(obj)}).catch(()=>{});}catch(e){}}
+  setTimeout(()=>{btn.textContent="Request Submitted ✓";btn.style.background="#2a4a2a";btn.style.color="#9cbc9c";btn.style.opacity="1";btn.disabled=false;},800);
+}
+
+function searchArea(area){
+  const areaUrls={"westport":"https://ssteele.pontegroupne.com/property-search/results/?searchtype=2&searchid=1281413&city=Westport","dartmouth":"https://ssteele.pontegroupne.com/property-search/results/?searchtype=2&searchid=1281413&city=Dartmouth","fall-river":"https://ssteele.pontegroupne.com/property-search/results/?searchtype=2&searchid=1281413&city=Fall+River","bristol":"https://ssteele.pontegroupne.com/property-search/results/?searchtype=2&searchid=1281413&city=Bristol","portsmouth":"https://ssteele.pontegroupne.com/property-search/results/?searchtype=2&searchid=1281413&city=Portsmouth","tiverton":"https://ssteele.pontegroupne.com/property-search/results/?searchtype=2&searchid=1281413&city=Tiverton","little-compton":"https://ssteele.pontegroupne.com/property-search/results/?searchtype=2&searchid=1281413&city=Little+Compton","barrington":"https://ssteele.pontegroupne.com/property-search/results/?searchtype=2&searchid=1281413&city=Barrington"};
+  window.open(areaUrls[area]||"https://ssteele.pontegroupne.com/property-search/results/?searchtype=2&searchid=1281413","_blank");
+}
+</script>
+
+</body>
+</html>

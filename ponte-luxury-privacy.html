@@ -11,9 +11,9 @@
 :root{--obsidian:#080808;--deep:#0e0e0e;--carbon:#141414;--border:rgba(180,150,90,0.18);--border-light:rgba(180,150,90,0.09);--champagne:#C9A96E;--champagne-light:#DFC28A;--champagne-dim:rgba(201,169,110,0.55);--silver-dim:rgba(184,192,200,0.42);--cream:#F2EDE4;--cream-dim:rgba(242,237,228,0.68);--text-body:rgba(242,237,228,0.70);--nav-h:88px;}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{background:var(--obsidian);color:var(--cream);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;cursor:none;}
-#cursor{position:fixed;width:10px;height:10px;background:var(--champagne);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:difference;}
-#cursor-ring{position:fixed;width:36px;height:36px;border:1px solid var(--champagne-dim);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .06s,top .06s,width .3s,height .3s;}
+body{background:var(--obsidian);color:var(--cream);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;}
+
+
 ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--obsidian);}::-webkit-scrollbar-thumb{background:var(--champagne);border-radius:2px;}
 nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 60px;z-index:1000;background:rgba(8,8,8,0.96);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);}
 .nav-logo{display:flex;align-items:center;gap:20px;text-decoration:none;}
@@ -27,7 +27,7 @@ nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);display:flex;align-i
 .nav-links a:hover{color:var(--champagne);}
 .nav-cta{color:var(--champagne)!important;border:1px solid var(--champagne-dim)!important;padding:10px 22px!important;}
 .nav-cta:hover{background:var(--champagne)!important;color:var(--obsidian)!important;}
-.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:none;padding:6px;background:none;border:none;}
+.nav-toggle{display:none;flex-direction:column;gap:5px;padding:6px;background:none;border:none;}
 .nav-toggle span{display:block;width:24px;height:1px;background:var(--cream);transition:transform .35s cubic-bezier(.16,1,.3,1),opacity .25s,width .3s;transform-origin:center;}
 .nav-toggle.open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
 .nav-toggle.open span:nth-child(2){opacity:0;width:0;}
@@ -40,7 +40,7 @@ nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);display:flex;align-i
 .drawer-brand{display:flex;flex-direction:column;gap:3px;}
 .drawer-brand .db-name{font-family:'Cormorant SC',serif;font-size:16px;letter-spacing:2px;color:var(--cream);}
 .drawer-brand .db-sub{font-size:8px;letter-spacing:3.5px;text-transform:uppercase;color:var(--champagne);}
-.drawer-close{width:32px;height:32px;border:1px solid var(--border);background:none;color:var(--cream-dim);font-size:16px;display:flex;align-items:center;justify-content:center;cursor:none;transition:border-color .2s,color .2s;}
+.drawer-close{width:32px;height:32px;border:1px solid var(--border);background:none;color:var(--cream-dim);font-size:16px;display:flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s;}
 .drawer-close:hover{border-color:var(--champagne);color:var(--champagne);}
 .drawer-nav{padding:16px 0;flex:1;}
 .drawer-nav a{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;font-size:11px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--cream-dim);text-decoration:none;border-bottom:1px solid var(--border-light);transition:color .2s,background .2s,padding-left .2s;}
@@ -140,11 +140,16 @@ footer{background:#050505;border-top:1px solid var(--border);padding:60px 10vw 4
   .footer-mini{flex-direction:column;align-items:flex-start;}
 }
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ELJRLBX6L2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ELJRLBX6L2');
+</script>
 </head>
 <body>
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
-
 <!-- DRAWER -->
 <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
 <div class="mobile-drawer" id="mobileDrawer">
@@ -167,7 +172,7 @@ footer{background:#050505;border-top:1px solid var(--border);padding:60px 10vw 4
       <div class="dc-item"><span class="dc-icon">◈</span>The Ponte Group Luxury Division</div>
       <div class="dc-item"><span class="dc-icon">◈</span>SE Massachusetts &amp; Rhode Island</div>
       <div class="dc-item"><span class="dc-icon">◈</span><a href="tel:+15088139267" style="color:inherit;text-decoration:none;">(508) 813-9267</a></div>
-      <div class="dc-item"><span class="dc-icon">◈</span><a href="mailto:PGLuxuryNE@gmail.com" style="color:inherit;text-decoration:none;">PGLuxuryNE@gmail.com</a></div>
+      <div class="dc-item"><span class="dc-icon">◈</span><a href="mailto:PGLuxuryNE@gmail.com?subject=Inquiry%20from%20PGLuxuryNE.com" style="color:inherit;text-decoration:none;"><a href="mailto:PGLuxuryNE@gmail.com?subject=Inquiry%20from%20PGLuxuryNE.com" style="color:inherit;text-decoration:none;">PGLuxuryNE@gmail.com</a></a></div>
     </div>
   </div>
 </div>
@@ -443,7 +448,7 @@ footer{background:#050505;border-top:1px solid var(--border);padding:60px 10vw 4
             <div class="cb-item">The Ponte Group Luxury Division</div>
             <div class="cb-item">The Ponte Group at Keller Williams South Watuppa</div>
             <div class="cb-item">Southeastern Massachusetts &amp; Rhode Island</div>
-            <div class="cb-item">For privacy inquiries: <a href="mailto:PGLuxuryNE@gmail.com" style="color:var(--champagne)">PGLuxuryNE@gmail.com</a></div>
+            <div class="cb-item">For privacy inquiries: <a href="mailto:PGLuxuryNE@gmail.com?subject=Inquiry%20from%20PGLuxuryNE.com" style="color:var(--champagne)"><a href="mailto:PGLuxuryNE@gmail.com?subject=Inquiry%20from%20PGLuxuryNE.com" style="color:inherit;text-decoration:none;">PGLuxuryNE@gmail.com</a></a></div>
             <div class="cb-item">Attn: Privacy Officer · Scott Steele, CEO &amp; Operating Principal</div>
             <div class="cb-item"><a href="tel:+15088139267" style="color:var(--champagne)">(508) 813-9267</a></div>
           </div>
@@ -479,12 +484,7 @@ footer{background:#050505;border-top:1px solid var(--border);padding:60px 10vw 4
 </footer>
 
 <script>
-const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
-document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px';});
-document.querySelectorAll('a,button,.toc-link,.pdl-item,.rg-cell').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.style.width='16px';cur.style.height='16px';ring.style.width='54px';ring.style.height='54px';});
-  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.width='36px';ring.style.height='36px';});
-});
+
 // Active TOC tracking on scroll
 const sections=document.querySelectorAll('.policy-section');
 const tocLinks=document.querySelectorAll('.toc-link');
@@ -511,5 +511,6 @@ function closeDrawer(){document.getElementById('mobileDrawer').classList.remove(
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
 window.addEventListener('error',function(e){console.warn('Page error:',e.message);});
 </script>
+<script src="//code.tidio.co/lu4v35oxfnh1txcrtcfrgksv09baqhcx.js" async></script>
 </body>
 </html>
